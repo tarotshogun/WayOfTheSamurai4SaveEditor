@@ -6,37 +6,53 @@
         xmlns:local="clr-namespace:WayOfTheSamurai4SaveEditor"
         mc:Ignorable="d"
         Title="WayOfTheSamurai4SaveEditor" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="CommonDataGridStyle" TargetType="DataGrid">
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+            <Setter Property="CanUserAddRows" Value="False" />
+        </Style>
+    </Window.Resources>
     <Grid>
-        <StackPanel>
-            <DockPanel>
-                <Menu DockPanel.Dock="Top">
-                    <MenuItem Header="ファイル">
-                        <MenuItem Header="開く"/>
-                        <MenuItem Header="保存"/>
-                        <MenuItem Header="名前を付けて保存"/>
-                    </MenuItem>
-                    <MenuItem Header="ヘルプ">
-                        <MenuItem Header="侍道4セーブエディタについて"/>
-                    </MenuItem>
-                </Menu>
-            </DockPanel>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="ファイル">
+                    <MenuItem Header="開く"/>
+                    <MenuItem Header="保存"/>
+                    <MenuItem Header="名前を付けて保存"/>
+                </MenuItem>
+                <MenuItem Header="ヘルプ">
+                    <MenuItem Header="侍道4セーブエディタについて"/>
+                </MenuItem>
+            </Menu>
             <TabControl x:Name="tabControl">
                 <TabItem Header="主人公情報">
-                    <DataGrid x:Name="mainCharacterDataGrid"  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+                    <DockPanel LastChildFill="True">
+                        <DataGrid x:Name="mainCharacterDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=1}"/>
+                    </DockPanel>
                 </TabItem>
                 <TabItem Header="帯刀中">
-                    <DataGrid x:Name="taitouDataGrid" d:ItemsSource="{d:SampleData ItemCount=1}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+                    <DockPanel LastChildFill="True">
+                        <DataGrid x:Name="taitouDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=3}"/>
+                    </DockPanel>
                 </TabItem>
                 <TabItem Header="武器袋">
-                    <DataGrid x:Name="bukiBukuroDataGrid" d:ItemsSource="{d:SampleData ItemCount=3}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+                    <DockPanel LastChildFill="True">
+                        <DataGrid x:Name="bukiBukuroDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=10}"/>
+                    </DockPanel>
                 </TabItem>
                 <TabItem Header="武器箪笥">
-                    <DataGrid x:Name="bukiDansuDataGrid" d:ItemsSource="{d:SampleData ItemCount=100}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+                    <DockPanel LastChildFill="True">
+                        <DataGrid x:Name="bukiDansuDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=100}"/>
+                    </DockPanel>
                 </TabItem>
                 <TabItem Header="流派">
-                    <DataGrid x:Name="ryuuhaDataGrid" d:ItemsSource="{d:SampleData ItemCount=3}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+                    <DockPanel LastChildFill="True">
+                        <DataGrid x:Name="ryuuhaDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=3}"/>
+                    </DockPanel>
                 </TabItem>
             </TabControl>
-        </StackPanel>
+        </DockPanel>
     </Grid>
 </Window>

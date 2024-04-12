@@ -16,7 +16,8 @@ namespace WayOfTheSamurai4SaveEditor
 
         private string _path;
 
-        public SaveData() {
+        public SaveData()
+        {
             MainCharacters = new ObservableCollection<MainCharacter>();
             Taitou = new ObservableCollection<Weapon>();
             BukiBukuro = new ObservableCollection<Weapon>();
@@ -28,7 +29,20 @@ namespace WayOfTheSamurai4SaveEditor
             MainCharacters.Add(new MainCharacter() { Name = "近藤勇" });
             MainCharacters.Add(new MainCharacter() { Name = "土方歳三" });
 
-            Taitou.Add(new Weapon() { });
+            for (int i = 0; i < 3; i++)
+            {
+                Taitou.Add(new Weapon() { Name = "なまくら刀" });
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                BukiBukuro.Add(new Weapon() { Name = "なまくら刀" });
+            }
+
+            for (int i = 0; i < 100; i++)
+            {
+                BukiDansu.Add(new Weapon() { Name = "なまくら刀" });
+            }
             return this;
         }
     }

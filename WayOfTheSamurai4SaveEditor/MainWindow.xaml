@@ -12,6 +12,7 @@
             <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
             <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
             <Setter Property="CanUserAddRows" Value="False" />
+            <Setter Property="AutoGenerateColumns" Value="False" /> 
         </Style>
     </Window.Resources>
     <Grid>
@@ -29,27 +30,59 @@
             <TabControl x:Name="tabControl">
                 <TabItem Header="主人公情報">
                     <DockPanel LastChildFill="True">
-                        <DataGrid x:Name="mainCharacterDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=1}"/>
+                        <DataGrid x:Name="mainCharacterDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=1}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                                <DataGridTextColumn Header="氏名" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="年齢" Binding="{Binding Age}"/>
+                                <DataGridTextColumn Header="郵便番号" Binding="{Binding ZipCode}"/>
+                                <DataGridTextColumn Header="住所" Binding="{Binding Address}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </DockPanel>
                 </TabItem>
                 <TabItem Header="帯刀中">
                     <DockPanel LastChildFill="True">
-                        <DataGrid x:Name="taitouDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=3}"/>
+                        <DataGrid x:Name="taitouDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=3}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="名前" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="攻撃力" Binding="{Binding Attack}"/>
+                                <DataGridTextColumn Header="耐久力" Binding="{Binding MaxTaikyuryoku}"/>
+                                <DataGridTextColumn Header="最大耐久力" Binding="{Binding Taikyuryoku}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </DockPanel>
                 </TabItem>
                 <TabItem Header="武器袋">
                     <DockPanel LastChildFill="True">
-                        <DataGrid x:Name="bukiBukuroDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=10}"/>
+                        <DataGrid x:Name="bukiBukuroDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=10}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="名前" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="攻撃力" Binding="{Binding Attack}"/>
+                                <DataGridTextColumn Header="耐久力" Binding="{Binding MaxTaikyuryoku}"/>
+                                <DataGridTextColumn Header="最大耐久力" Binding="{Binding Taikyuryoku}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </DockPanel>
                 </TabItem>
                 <TabItem Header="武器箪笥">
                     <DockPanel LastChildFill="True">
-                        <DataGrid x:Name="bukiDansuDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=100}"/>
+                        <DataGrid x:Name="bukiDansuDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=100}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="名前" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="攻撃力" Binding="{Binding Attack}"/>
+                                <DataGridTextColumn Header="耐久力" Binding="{Binding MaxTaikyuryoku}"/>
+                                <DataGridTextColumn Header="最大耐久力" Binding="{Binding Taikyuryoku}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </DockPanel>
                 </TabItem>
-                <TabItem Header="流派">
+                <TabItem Header="流派" IsEnabled="False">
                     <DockPanel LastChildFill="True">
-                        <DataGrid x:Name="ryuuhaDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=3}"/>
+                        <DataGrid x:Name="ryuuhaDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=3}">
+                            <DataGrid.Columns>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </DockPanel>
                 </TabItem>
             </TabControl>

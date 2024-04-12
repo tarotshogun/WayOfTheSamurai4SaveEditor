@@ -8,19 +8,41 @@ namespace WayOfTheSamurai4SaveEditor
 {
     public class Weapon
     {
-        public string Name { get; set; }
-        public int Attack{ get; set; }
-        public int Taikyu{ get; set; }
-        public int MaxTaikyu{ get; set; }
-        public bool IsDefault { get; }
-        public int Yaiba{ get; }
+        private string _name;
+        private int _attack;
+        private bool _isDefault;
+
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                if (!_isDefault)
+                {
+                    _name = value;
+                }
+            }
+        }
+        public int Attack
+        {
+            get { return _attack; }
+            set { _attack = value; }
+        }
+        public int Taikyu { get; set; }
+        public int MaxTaikyu { get; set; }
+        public bool IsDefault
+        {
+            get { return _isDefault; }
+        }
+        public int Yaiba { get; }
         public int Tsuba { get; }
         public int Tsuka { get; }
         public int Zansatsu { get; set; }
 
-        public Weapon()
+        public Weapon(string name = "")
         {
-            Name = "";
+            _name = name;
+            _isDefault = true;
         }
     }
 }

@@ -31,17 +31,17 @@ namespace WayOfTheSamurai4SaveEditor
 
             for (int i = 0; i < 3; i++)
             {
-                Taitou.Add(new Weapon() { Name = "なまくら刀" });
+                Taitou.Add(new Weapon("なまくら刀"));
             }
 
             for (int i = 0; i < 10; i++)
             {
-                BukiBukuro.Add(new Weapon() { Name = "なまくら刀" });
+                BukiBukuro.Add(new Weapon("なまくら刀"));
             }
 
             for (int i = 0; i < 100; i++)
             {
-                BukiDansu.Add(new Weapon() { Name = "なまくら刀" });
+                BukiDansu.Add(new Weapon("なまくら刀"));
             }
             return this;
         }

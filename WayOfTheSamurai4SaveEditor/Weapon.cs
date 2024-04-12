@@ -10,14 +10,14 @@ namespace WayOfTheSamurai4SaveEditor
     {
         private string _name;
         private int _attack;
-        private bool _isDefault;
+        private bool _isOriginal;
 
         public string Name
         {
             get { return _name; }
             set
             {
-                if (!_isDefault)
+                if (_isOriginal)
                 {
                     _name = value;
                 }
@@ -30,9 +30,9 @@ namespace WayOfTheSamurai4SaveEditor
         }
         public int Taikyu { get; set; }
         public int MaxTaikyu { get; set; }
-        public bool IsDefault
+        public bool isOriginal
         {
-            get { return _isDefault; }
+            get { return _isOriginal; }
         }
         public int Yaiba { get; }
         public int Tsuba { get; }
@@ -42,7 +42,7 @@ namespace WayOfTheSamurai4SaveEditor
         public Weapon(string name = "")
         {
             _name = name;
-            _isDefault = true;
+            _isOriginal = false;
         }
     }
 }

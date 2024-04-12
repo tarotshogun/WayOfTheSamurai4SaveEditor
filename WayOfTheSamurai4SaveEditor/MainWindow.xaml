@@ -19,7 +19,7 @@
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="ファイル">
-                    <MenuItem Header="開く"/>
+                    <MenuItem Header="開く" Click="OpenFile_Click"/>
                     <MenuItem Header="保存"/>
                     <MenuItem Header="名前を付けて保存"/>
                 </MenuItem>
@@ -32,11 +32,11 @@
                     <DockPanel LastChildFill="True">
                         <DataGrid x:Name="mainCharacterDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=1}">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                                 <DataGridTextColumn Header="氏名" Binding="{Binding Name}"/>
-                                <DataGridTextColumn Header="年齢" Binding="{Binding Age}"/>
-                                <DataGridTextColumn Header="郵便番号" Binding="{Binding ZipCode}"/>
-                                <DataGridTextColumn Header="住所" Binding="{Binding Address}"/>
+                                <DataGridTextColumn Header="体力" Binding="{Binding Hp}"/>
+                                <DataGridTextColumn Header="最大体力" Binding="{Binding MaxHp}"/>
+                                <DataGridTextColumn Header="活力" Binding="{Binding Katsuryoku}"/>
+                                <DataGridTextColumn Header="最大活力" Binding="{Binding MaxKatsuryoku}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </DockPanel>
@@ -45,6 +45,7 @@
                     <DockPanel LastChildFill="True">
                         <DataGrid x:Name="taitouDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=3}">
                             <DataGrid.Columns>
+                                <DataGridCheckBoxColumn Header="自作" Binding="{Binding IsOriginal}"/>
                                 <DataGridTextColumn Header="名前" Binding="{Binding Name}"/>
                                 <DataGridTextColumn Header="攻撃力" Binding="{Binding Attack}"/>
                                 <DataGridTextColumn Header="耐久力" Binding="{Binding MaxTaikyuryoku}"/>
@@ -57,6 +58,7 @@
                     <DockPanel LastChildFill="True">
                         <DataGrid x:Name="bukiBukuroDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=10}">
                             <DataGrid.Columns>
+                                <DataGridCheckBoxColumn Header="自作" Binding="{Binding IsOriginal}"/>
                                 <DataGridTextColumn Header="名前" Binding="{Binding Name}"/>
                                 <DataGridTextColumn Header="攻撃力" Binding="{Binding Attack}"/>
                                 <DataGridTextColumn Header="耐久力" Binding="{Binding MaxTaikyuryoku}"/>
@@ -69,6 +71,7 @@
                     <DockPanel LastChildFill="True">
                         <DataGrid x:Name="bukiDansuDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=100}">
                             <DataGrid.Columns>
+                                <DataGridCheckBoxColumn Header="自作" Binding="{Binding IsOriginal}"/>
                                 <DataGridTextColumn Header="名前" Binding="{Binding Name}"/>
                                 <DataGridTextColumn Header="攻撃力" Binding="{Binding Attack}"/>
                                 <DataGridTextColumn Header="耐久力" Binding="{Binding MaxTaikyuryoku}"/>

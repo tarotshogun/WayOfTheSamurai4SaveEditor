@@ -9,15 +9,17 @@ namespace WayOfTheSamurai4SaveEditor
 {
     public class SaveData
     {
+        private string _path;
+
         public ObservableCollection<MainCharacter> MainCharacters;
         public ObservableCollection<Weapon> Taitou;
         public ObservableCollection<Weapon> BukiBukuro;
         public ObservableCollection<Weapon> BukiDansu;
 
-        private string _path;
-
-        public SaveData()
+        public SaveData(string path = "")
         {
+            _path = path;
+
             MainCharacters = new ObservableCollection<MainCharacter>();
             Taitou = new ObservableCollection<Weapon>();
             BukiBukuro = new ObservableCollection<Weapon>();
@@ -26,8 +28,7 @@ namespace WayOfTheSamurai4SaveEditor
 
         public SaveData Load()
         {
-            MainCharacters.Add(new MainCharacter() { Name = "近藤勇" });
-            MainCharacters.Add(new MainCharacter() { Name = "土方歳三" });
+            MainCharacters.Add(new MainCharacter() { Name = "名無し侍" });
 
             for (int i = 0; i < 3; i++)
             {

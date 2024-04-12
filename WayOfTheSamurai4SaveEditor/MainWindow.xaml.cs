@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.ObjectModel;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,16 @@ namespace WayOfTheSamurai4SaveEditor
         public MainWindow()
         {
             InitializeComponent();
+
+            // Load the save data
+            SaveData data = new();
+            data.Load();
+
+            // Data binding
+            mainCharacterDataGrid.ItemsSource = data.MainCharacters;
+            taitouDataGrid.ItemsSource = data.Taitou;
+            bukiBukuroDataGrid.ItemsSource = data.BukiBukuro;
+            bukiDansuDataGrid.ItemsSource = data.BukiDansu;
         }
     }
 }

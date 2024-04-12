@@ -33,10 +33,11 @@
                         <DataGrid x:Name="mainCharacterDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=1}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="氏名" Binding="{Binding Name}"/>
-                                <DataGridTextColumn Header="体力" Binding="{Binding Hp}"/>
-                                <DataGridTextColumn Header="最大体力" Binding="{Binding MaxHp}"/>
+                                <DataGridTextColumn Header="命" Binding="{Binding Hp}"/>
+                                <DataGridTextColumn Header="最大命" Binding="{Binding MaxHp}"/>
                                 <DataGridTextColumn Header="活力" Binding="{Binding Katsuryoku}"/>
                                 <DataGridTextColumn Header="最大活力" Binding="{Binding MaxKatsuryoku}"/>
+                                <DataGridTextColumn Header="所持金" Binding="{Binding Money}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </DockPanel>

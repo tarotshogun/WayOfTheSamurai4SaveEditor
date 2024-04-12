@@ -10,6 +10,7 @@ namespace WayOfTheSamurai4SaveEditor
     {
         public MainCharacter() { Name = ""; }
 
+        // 最大31文字
         public string Name { get; set; }
         public int Day { get; }
         public int Time { get; }
@@ -17,6 +18,7 @@ namespace WayOfTheSamurai4SaveEditor
         public int Hp { get; set; }
         public int Katsuryoku { get; set; }
         public int MaxKatsuryoku { get; set; }
-        public int Money { get; set; }
+        // 最大99999
+        public uint Money { get; set; }
     }
 }

@@ -43,10 +43,25 @@ namespace WayOfTheSamurai4SaveEditor
             }
 
             var path = dialog.FileName;
-            if (File.Exists(path))
+            try
             {
-                Save.Load();
+                Save = SaveDataLoader.Load(path);
             }
+            catch (FileNotFoundException)
+            {
+                string messageBoxText = "ファイルが見つかりません。\nファイル名を確認して再実行してください";
+                string caption = "開く";
+                var button = MessageBoxButton.OK;
+                var icon = MessageBoxImage.Warning;
+                MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
+                throw;
+            }
+
+            // Data binding
+            mainCharacterDataGrid.ItemsSource = Save.MainCharacters;
+            taitouDataGrid.ItemsSource = Save.Taitou;
+            bukiBukuroDataGrid.ItemsSource = Save.BukiBukuro;
+            bukiDansuDataGrid.ItemsSource = Save.BukiDansu;
         }
     }
 }

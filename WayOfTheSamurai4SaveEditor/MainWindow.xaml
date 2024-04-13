@@ -6,14 +6,39 @@
         xmlns:local="clr-namespace:WayOfTheSamurai4SaveEditor"
         mc:Ignorable="d"
         Title="WayOfTheSamurai4SaveEditor" Height="450" Width="800">
+    <Window.DataContext>
+        <local:SaveData/>
+    </Window.DataContext>
     <Window.Resources>
         <Style x:Key="CommonDataGridStyle" TargetType="DataGrid">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
             <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
             <Setter Property="CanUserAddRows" Value="False" />
-            <Setter Property="AutoGenerateColumns" Value="False" /> 
+            <Setter Property="AutoGenerateColumns" Value="False" />
+            <Setter Property="HorizontalGridLinesBrush" Value="LightGray" />
+            <Setter Property="VerticalGridLinesBrush" Value="LightGray" />
         </Style>
+        <DataGrid x:Key="WeaponsDataGrid" x:Name="bukiDansuDataGrid" Style="{StaticResource CommonDataGridStyle}" 
+                            ItemsSource="{Binding BukiDansu}" d:ItemsSource="{d:SampleData ItemCount=100}">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Header="自作" Binding="{Binding IsOriginal}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="名前" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="攻撃力" Binding="{Binding Attack}"/>
+                <DataGridTextColumn Header="耐久度	" Binding="{Binding MaxTaikyu}"/>
+                <DataGridTextColumn Header="最大耐久度" Binding="{Binding Taikyu}"/>
+                <DataGridTextColumn Header="質	" Binding="{Binding Shitsu}"/>
+                <DataGridTextColumn Header="最大質" Binding="{Binding MaxShitsu}"/>
+                <DataGridTextColumn Header="斬殺数" Binding="{Binding Zansatsu}"/>
+                <DataGridTemplateColumn Header="刃">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding YaibaList}" SelectedValue="{Binding Yaiba}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Window.Resources>
     <Grid>
         <DockPanel>
@@ -30,7 +55,8 @@
             <TabControl x:Name="tabControl">
                 <TabItem Header="主人公情報">
                     <DockPanel LastChildFill="True">
-                        <DataGrid x:Name="mainCharacterDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=1}">
+                        <DataGrid x:Name="mainCharacterDataGrid" Style="{StaticResource CommonDataGridStyle}" 
+                                  ItemsSource="{Binding MainCharacters}" d:ItemsSource="{d:SampleData ItemCount=1}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="氏名" Binding="{Binding Name}"/>
                                 <DataGridTextColumn Header="命" Binding="{Binding Hp}"/>
@@ -42,43 +68,23 @@
                         </DataGrid>
                     </DockPanel>
                 </TabItem>
-                <TabItem Header="帯刀中">
+                <TabItem Header="帯刀中" IsEnabled="False">
                     <DockPanel LastChildFill="True">
-                        <DataGrid x:Name="taitouDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=3}">
-                            <DataGrid.Columns>
-                                <DataGridCheckBoxColumn Header="自作" Binding="{Binding IsOriginal}"/>
-                                <DataGridTextColumn Header="名前" Binding="{Binding Name}"/>
-                                <DataGridTextColumn Header="攻撃力" Binding="{Binding Attack}"/>
-                                <DataGridTextColumn Header="耐久力" Binding="{Binding MaxTaikyuryoku}"/>
-                                <DataGridTextColumn Header="最大耐久力" Binding="{Binding Taikyuryoku}"/>
-                            </DataGrid.Columns>
+                        <DataGrid x:Name="taitouDataGrid" Style="{StaticResource CommonDataGridStyle}" 
+                                  ItemsSource="{Binding Taitou}" d:ItemsSource="{d:SampleData ItemCount=3}">
                         </DataGrid>
                     </DockPanel>
                 </TabItem>
-                <TabItem Header="武器袋">
+                <TabItem Header="武器袋" IsEnabled="False">
                     <DockPanel LastChildFill="True">
-                        <DataGrid x:Name="bukiBukuroDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=10}">
-                            <DataGrid.Columns>
-                                <DataGridCheckBoxColumn Header="自作" Binding="{Binding IsOriginal}"/>
-                                <DataGridTextColumn Header="名前" Binding="{Binding Name}"/>
-                                <DataGridTextColumn Header="攻撃力" Binding="{Binding Attack}"/>
-                                <DataGridTextColumn Header="耐久力" Binding="{Binding MaxTaikyuryoku}"/>
-                                <DataGridTextColumn Header="最大耐久力" Binding="{Binding Taikyuryoku}"/>
-                            </DataGrid.Columns>
+                        <DataGrid x:Name="bukiBukuroDataGrid" Style="{StaticResource CommonDataGridStyle}" 
+                                  ItemsSource="{Binding BukiBukuro}" d:ItemsSource="{d:SampleData ItemCount=10}">
                         </DataGrid>
                     </DockPanel>
                 </TabItem>
                 <TabItem Header="武器箪笥">
                     <DockPanel LastChildFill="True">
-                        <DataGrid x:Name="bukiDansuDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=100}">
-                            <DataGrid.Columns>
-                                <DataGridCheckBoxColumn Header="自作" Binding="{Binding IsOriginal}"/>
-                                <DataGridTextColumn Header="名前" Binding="{Binding Name}"/>
-                                <DataGridTextColumn Header="攻撃力" Binding="{Binding Attack}"/>
-                                <DataGridTextColumn Header="耐久力" Binding="{Binding MaxTaikyuryoku}"/>
-                                <DataGridTextColumn Header="最大耐久力" Binding="{Binding Taikyuryoku}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                        <ContentControl Grid.Row="0" Grid.Column="0" Content="{StaticResource WeaponsDataGrid}"/>
                     </DockPanel>
                 </TabItem>
                 <TabItem Header="流派" IsEnabled="False">

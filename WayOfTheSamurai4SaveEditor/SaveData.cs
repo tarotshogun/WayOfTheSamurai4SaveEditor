@@ -10,17 +10,17 @@ namespace WayOfTheSamurai4SaveEditor
 {
     public class SaveData
     {
-        public ObservableCollection<MainCharacter> MainCharacters;
-        public ObservableCollection<Weapon> Taitou;
-        public ObservableCollection<Weapon> BukiBukuro;
-        public ObservableCollection<Weapon> BukiDansu;
+        public ObservableCollection<MainCharacter> MainCharacters { get; set; }
+        public ObservableCollection<Weapon> Taitou {  get; set; }
+        public ObservableCollection<Weapon> BukiBukuro { get; set; }
+        public ObservableCollection<Weapon> BukiDansu { get; set; }
 
         public SaveData()
         {
-            MainCharacters = new ObservableCollection<MainCharacter>();
-            Taitou = new ObservableCollection<Weapon>();
-            BukiBukuro = new ObservableCollection<Weapon>();
-            BukiDansu = new ObservableCollection<Weapon>();
+            MainCharacters = [];
+            Taitou = [];
+            BukiBukuro = [];
+            BukiDansu = [];
         }
 
         public SaveData Load(string path)

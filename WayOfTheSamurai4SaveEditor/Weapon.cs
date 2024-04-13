@@ -6,43 +6,40 @@ using System.Threading.Tasks;
 
 namespace WayOfTheSamurai4SaveEditor
 {
-    public class Weapon
+    public class Weapon(string name = "")
     {
-        private string _name;
-        private int _attack;
-        private bool _isOriginal;
+        public IEnumerable<YaibaMaterial> YaibaList { get; private set; } = Enum.GetValues<YaibaMaterial>();
+        public IEnumerable<YaibaMaterial> TsubaList { get; private set; } = Enum.GetValues<YaibaMaterial>();
+        public IEnumerable<YaibaMaterial> TsukaList { get; private set; } = Enum.GetValues<YaibaMaterial>();
 
+        // 17文字+終端文字
         public string Name
         {
             get { return _name; }
             set
             {
-                if (_isOriginal)
+                if (IsOriginal)
                 {
                     _name = value;
                 }
             }
         }
-        public int Attack
+        public uint Attack
         {
             get { return _attack; }
             set { _attack = value; }
         }
-        public int Taikyu { get; set; }
-        public int MaxTaikyu { get; set; }
-        public bool isOriginal
-        {
-            get { return _isOriginal; }
-        }
-        public int Yaiba { get; }
-        public int Tsuba { get; }
-        public int Tsuka { get; }
-        public int Zansatsu { get; set; }
+        public uint Taikyu { get; set; }
+        public uint MaxTaikyu { get; set; }
+        public uint Shitsu { get; set; }
+        public uint MaxShitsu { get; set; }
+        public bool IsOriginal { get; set; } = false;
+        public YaibaMaterial Yaiba { get; set; }
+        public TsubaMaterial Tsuba { get; set; }
+        public TsukaMaterial Tsuka { get; set; }
+        public uint Zansatsu { get; set; }
 
-        public Weapon(string name = "")
-        {
-            _name = name;
-            _isOriginal = false;
-        }
+        private string _name = name;
+        private uint _attack;
     }
 }

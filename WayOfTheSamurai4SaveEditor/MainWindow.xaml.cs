@@ -20,17 +20,9 @@ namespace WayOfTheSamurai4SaveEditor
     /// </summary>
     public partial class MainWindow : Window
     {
-        public SaveData Save { get; set; } = new();
-
         public MainWindow()
         {
             InitializeComponent();
-
-            // Data binding
-            mainCharacterDataGrid.ItemsSource = Save.MainCharacters;
-            taitouDataGrid.ItemsSource = Save.Taitou;
-            bukiBukuroDataGrid.ItemsSource = Save.BukiBukuro;
-            bukiDansuDataGrid.ItemsSource = Save.BukiDansu;
         }
 
         private void OpenFile_Click(object sender, RoutedEventArgs e)
@@ -45,7 +37,7 @@ namespace WayOfTheSamurai4SaveEditor
             var path = dialog.FileName;
             try
             {
-                Save = SaveDataLoader.Load(path);
+                DataContext = SaveDataLoader.Load(path);
             }
             catch (FileNotFoundException)
             {
@@ -54,14 +46,15 @@ namespace WayOfTheSamurai4SaveEditor
                 var button = MessageBoxButton.OK;
                 var icon = MessageBoxImage.Warning;
                 MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
-                throw;
             }
-
-            // Data binding
-            mainCharacterDataGrid.ItemsSource = Save.MainCharacters;
-            taitouDataGrid.ItemsSource = Save.Taitou;
-            bukiBukuroDataGrid.ItemsSource = Save.BukiBukuro;
-            bukiDansuDataGrid.ItemsSource = Save.BukiDansu;
+            catch(Exception ex)
+            {
+                string messageBoxText = ex.Message;
+                string caption = "開く";
+                var button = MessageBoxButton.OK;
+                var icon = MessageBoxImage.Warning;
+                MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
+            }
         }
     }
 }

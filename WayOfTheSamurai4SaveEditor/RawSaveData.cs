@@ -92,5 +92,7 @@ namespace WayOfTheSamurai4SaveEditor
         public byte[] PaddingACE0_ACDF;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 200)] // 武器箪笥四まで解放したときの値
         public RawBukiDansuWeapons[] BukiDansu;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 221634)]
+        public byte[] Padding;
     }
 }

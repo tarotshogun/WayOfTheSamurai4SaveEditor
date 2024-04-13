@@ -20,12 +20,14 @@ namespace WayOfTheSamurai4SaveEditor
     /// </summary>
     public partial class MainWindow : Window
     {
-        RawSaveData original = new();
-        SaveDataViewModel save = new();
+        public SaveDataViewModel SaveData { get; set; }
+        RawSaveData original;
 
         public MainWindow()
         {
             InitializeComponent();
+            SaveData = new();
+            original = new();
         }
 
         private void OpenFile_Click(object sender, RoutedEventArgs e)
@@ -41,7 +43,8 @@ namespace WayOfTheSamurai4SaveEditor
             try
             {
                 original = SaveDataAccessor.Load(path);
-                save = SaveDataConverter.ToSaveData(original);
+                SaveData.Update(original);
+                DataContext = SaveData;
             }
             catch (FileNotFoundException)
             {
@@ -51,7 +54,7 @@ namespace WayOfTheSamurai4SaveEditor
                 var icon = MessageBoxImage.Warning;
                 MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 string messageBoxText = ex.Message;
                 string caption = "開く";
@@ -59,8 +62,6 @@ namespace WayOfTheSamurai4SaveEditor
                 var icon = MessageBoxImage.Warning;
                 MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
             }
-
-            DataContext = save;
         }
     }
 }

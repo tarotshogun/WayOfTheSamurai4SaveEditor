@@ -45,22 +45,20 @@ namespace WayOfTheSamurai4SaveEditor
 
         public static void Save(string path, RawSaveData raw)
         {
-            using (var stream = new FileStream(path, FileMode.Create))
+            using var stream = new FileStream(path, FileMode.Create);
+            using var writer = new BinaryWriter(stream);
+            var structSize = Marshal.SizeOf(typeof(RawSaveData));
+            var hglobal = Marshal.AllocHGlobal(structSize);
+            try
             {
-                using var writer = new BinaryWriter(stream);
-                var structSize = Marshal.SizeOf(typeof(RawSaveData));
-                var hglobal = Marshal.AllocHGlobal(structSize);
-                try
-                {
-                    Marshal.StructureToPtr(raw, hglobal, false);
-                    byte[] bytes = new byte[structSize];
-                    Marshal.Copy(hglobal, bytes, 0, structSize);
-                    writer.Write(bytes);
-                }
-                finally
-                {
-                    Marshal.FreeHGlobal(hglobal);
-                }
+                Marshal.StructureToPtr(raw, hglobal, false);
+                byte[] bytes = new byte[structSize];
+                Marshal.Copy(hglobal, bytes, 0, structSize);
+                writer.Write(bytes);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(hglobal);
             }
         }
     }

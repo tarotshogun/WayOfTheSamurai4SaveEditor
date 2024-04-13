@@ -23,12 +23,11 @@ namespace WayOfTheSamurai4SaveEditor
             BukiDansu = [];
         }
 
-        public void Update(RawSaveData raw)
+        public SaveDataViewModel(RawSaveData raw)
         {
-            MainCharacters.Clear();
-            BukiDansu.Clear();
-
             MainCharacters = MainCharacterConverter.ToMainCharacters(ref raw);
+            Taitou = [];
+            BukiBukuro = [];
             BukiDansu = WeaponConverter.ToWeapons(ref raw.BukiDansu);
         }
     }

@@ -20,13 +20,12 @@ namespace WayOfTheSamurai4SaveEditor
     /// </summary>
     public partial class MainWindow : Window
     {
-        public SaveDataViewModel SaveData { get; set; }
+        // TODO: Move to ViewModel
         RawSaveData original;
 
         public MainWindow()
         {
             InitializeComponent();
-            SaveData = new();
             original = new();
         }
 
@@ -43,8 +42,7 @@ namespace WayOfTheSamurai4SaveEditor
             try
             {
                 original = SaveDataAccessor.Load(path);
-                SaveData.Update(original);
-                DataContext = SaveData;
+                DataContext = new SaveDataViewModel(original);
             }
             catch (FileNotFoundException)
             {

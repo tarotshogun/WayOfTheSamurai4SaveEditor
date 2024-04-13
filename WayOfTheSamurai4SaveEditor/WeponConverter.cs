@@ -13,39 +13,29 @@ namespace WayOfTheSamurai4SaveEditor
     {
         static uint ToUInt32(byte[] raw)
         {
-            Debug.Assert(raw.Length < 4);
-
             // ToUInt32は少なくとも4byteのバイト列を必要とするため、値をコピーする
+            Debug.Assert(raw.Length < 4);
             byte[] extendedRaw = new byte[4];
             Array.Copy(raw, extendedRaw, raw.Length);
 
             return BitConverter.ToUInt32(extendedRaw);
         }
 
-        static YaibaMaterial ToYaibaMaterial(byte[] raw)
+        static T ToEnum<T>(byte[] raw) where T : Enum
         {
-            var yaiba = ToUInt32(raw);
-            if (Enum.IsDefined(typeof(YaibaMaterial), yaiba))
+            var value = ToUInt32(raw);
+            if (Enum.IsDefined(typeof(T), value))
             {
-                return (YaibaMaterial)yaiba;
+                return (T)(object)value;
             }
             else
             {
-                return YaibaMaterial.無;
+                const string defaultValue = "無";
+                Debug.Assert(Enum.GetNames(typeof(T)).Contains(defaultValue));
+                return (T)Enum.Parse(typeof(T), "無");
             }
         }
-        static TsubaMaterial ToTsubaMaterial(byte[] raw)
-        {
-            var tsuba = ToUInt32(raw);
-            if (Enum.IsDefined(typeof(TsubaMaterial), tsuba))
-            {
-                return (TsubaMaterial)tsuba;
-            }
-            else
-            {
-                return TsubaMaterial.無;
-            }
-        }
+
 
         static TsukaMaterial ToTsukaMaterial(byte[] raw)
         {
@@ -79,13 +69,17 @@ namespace WayOfTheSamurai4SaveEditor
             var shitsu = BitConverter.ToUInt16(raw.Shitsu);
             var maxShitsu = BitConverter.ToUInt16(raw.MaxShitsu);
             var zansatsu = BitConverter.ToUInt16(raw.NumZansatsu);
-            var yaiba = ToYaibaMaterial(raw.Yaiba);
-            var tsuba = ToTsubaMaterial(raw.Tsuba);
+            var yaiba =ToEnum<YaibaMaterial>(raw.Yaiba);
+            var tsuba = ToEnum<TsubaMaterial>(raw.Tsuba);
             var tsuka = ToTsukaMaterial(raw.Tsuka);
+            var mei = ToEnum<Mei>(raw.Mei);
 
-            Debug.WriteLine(
-                string.Format("[0x{0:X2}:{1:X}] unique:{2:X6} material: 0x{3:X2} 0x{4:X3} 0x{5:X4}",
-                weponId, name, uniqueId, ToUInt32(raw.Yaiba), ToUInt32(raw.Tsuba), BitConverter.ToUInt16(raw.Tsuka)));
+            Debug.Write(string.Format("[0x{0:X2}:{1:X}] ", weponId, name));
+            Debug.Write(string.Format("unique: 0x{0:X2} ", uniqueId));
+            Debug.Write(string.Format("materials: 0x{0:X8} 0x{1:X8} 0x{2:X4} ", 
+                ToUInt32(raw.Yaiba), ToUInt32(raw.Tsuba), BitConverter.ToUInt16(raw.Tsuka)));
+            Debug.Write(string.Format("mei: 0x{0:X8} ", ToUInt32(raw.Mei)));
+            Debug.WriteLine("");
 
             return new Weapon(name)
             {
@@ -99,6 +93,7 @@ namespace WayOfTheSamurai4SaveEditor
                 Yaiba = yaiba,
                 Tsuba = tsuba,
                 Tsuka = tsuka,
+                Mei = mei,
             };
         }
 

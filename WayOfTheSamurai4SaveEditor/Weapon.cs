@@ -11,6 +11,7 @@ namespace WayOfTheSamurai4SaveEditor
         public IEnumerable<YaibaMaterial> YaibaList { get; private set; } = Enum.GetValues<YaibaMaterial>();
         public IEnumerable<YaibaMaterial> TsubaList { get; private set; } = Enum.GetValues<YaibaMaterial>();
         public IEnumerable<YaibaMaterial> TsukaList { get; private set; } = Enum.GetValues<YaibaMaterial>();
+        public IEnumerable<Mei> MeiList { get; private set; } = Enum.GetValues<Mei>();
 
         // 17文字+終端文字
         public string Name
@@ -37,6 +38,7 @@ namespace WayOfTheSamurai4SaveEditor
         public YaibaMaterial Yaiba { get; set; }
         public TsubaMaterial Tsuba { get; set; }
         public TsukaMaterial Tsuka { get; set; }
+        public Mei Mei { get; set; }
         public uint Zansatsu { get; set; }
 
         private string _name = name;

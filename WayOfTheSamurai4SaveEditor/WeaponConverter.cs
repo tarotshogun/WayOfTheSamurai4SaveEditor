@@ -44,40 +44,37 @@ namespace WayOfTheSamurai4SaveEditor
             }
 
             var attack = BitConverter.ToUInt16(raw.Attack);
-            var weponId = BitConverter.ToUInt16(raw.WeaponId);
+            var weaponId = BitConverter.ToUInt16(raw.WeaponId);
             var uniqueId = BitConverter.ToUInt64(
                 [raw.UniqueWeponId[0], raw.UniqueWeponId[1], raw.UniqueWeponId[2],
                 raw.UniqueWeponId[3], raw.UniqueWeponId[4], raw.UniqueWeponId[5], 0x00, 0x00]
             );
-            var taikyu = BitConverter.ToUInt16(raw.Taikyu);
-            var maxTaikyu = BitConverter.ToUInt16(raw.MaxTaikyu);
+            var durability = BitConverter.ToUInt16(raw.Durability);
+            var maxDurability = BitConverter.ToUInt16(raw.MaxDurability);
             var quality = BitConverter.ToUInt16(raw.Quality);
             var maxQuality = BitConverter.ToUInt16(raw.MaxQuality);
-            var zansatsu = BitConverter.ToUInt16(raw.NumZansatsu);
+            var killCount = BitConverter.ToUInt16(raw.KillCount);
             var yaiba = ToEnum<YaibaMaterial>(raw.Yaiba);
             var tsuba = ToEnum<TsubaMaterial>(raw.Tsuba);
             var tsuka = ToTsukaMaterial(raw.Tsuka);
             var mei = ToEnum<Mei>(raw.Mei);
 
-            Debug.Write(string.Format("[0x{0:X2}:{1:X}] ", weponId, name));
+            Debug.Write(string.Format("[0x{0:X2}:{1:X}] ", weaponId, name));
             Debug.Write(string.Format("unique: 0x{0:X2} ", uniqueId));
             Debug.Write(string.Format("materials: 0x{0:X8} 0x{1:X8} 0x{2:X4} ",
                 ToUInt32(raw.Yaiba), ToUInt32(raw.Tsuba), BitConverter.ToUInt16(raw.Tsuka)));
             Debug.Write(string.Format("mei: 0x{0:X8} ", ToUInt32(raw.Mei)));
             Debug.WriteLine("");
 
-            return new Weapon(name)
+            return new Weapon(name, yaiba, tsuba, tsuka)
             {
                 Attack = attack,
-                IsOriginal = (weponId == 0xFFFF),
-                Taikyu = taikyu,
-                MaxTaikyu = maxTaikyu,
-                Shitsu = quality,
-                MaxShitsu = maxQuality,
-                Zansatsu = zansatsu,
-                Yaiba = yaiba,
-                Tsuba = tsuba,
-                Tsuka = tsuka,
+                IsOriginal = (weaponId == 0xFFFF),
+                Durability = durability,
+                MaxDurability = maxDurability,
+                Quality = quality,
+                MaxQuality = maxQuality,
+                KillCount = killCount,
                 Mei = mei,
             };
         }

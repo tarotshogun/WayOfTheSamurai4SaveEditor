@@ -26,7 +26,7 @@ namespace WayOfTheSamurai4SaveEditor
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public byte[] Attack;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] MaxTaikyu;
+        public byte[] MaxDurability;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public byte[] Quality;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
@@ -56,7 +56,7 @@ namespace WayOfTheSamurai4SaveEditor
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
         public byte[] TaikyuKaihuku;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] Taikyu;
+        public byte[] Durability;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public byte[] PaddingAD82_AD83;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
@@ -64,7 +64,7 @@ namespace WayOfTheSamurai4SaveEditor
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
         public byte[] PaddingAD87_AD89;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] NumZansatsu;
+        public byte[] KillCount;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public byte[] PaddingAD8C_AD8D;
     }

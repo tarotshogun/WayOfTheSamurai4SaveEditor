@@ -168,7 +168,7 @@ namespace WayOfTheSamurai4SaveEditor
         羅刹 = 0x0096,
         蝉丸 = 0x00F9,
         虎徹 = 0x015B,
-        黒蜻蛉 = 0x00FE,
+        蛇蜻蛉 = 0x00FE, 
         闇緊 = 0x0084,
         貪鬼丸 = 0x00F5,
         金盞花 = 0x0101,
@@ -176,6 +176,7 @@ namespace WayOfTheSamurai4SaveEditor
         阿摩羅 = 0x0080,
         陸奥守吉行 = 0x0159,
         馬通二 = 0x00F6,
+        黒蜻蛉 = 0x0094,
 
         // 槍
         黒獅子 = 0x001C,

@@ -15,7 +15,7 @@ namespace WayOfTheSamurai4SaveEditor
                 const int MaxNameLength = 31;
                 if (value.Length > MaxNameLength)
                 {
-                    _name = value.Substring(0, MaxNameLength);
+                    _name = value[..MaxNameLength];
                 } 
                 else
                 {

@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace WayOfTheSamurai4SaveEditor
 {
-    public class Weapon(string name = "")
+    public class Weapon(
+        string name = "",
+        YaibaMaterial yaiba = YaibaMaterial.無,
+        TsubaMaterial tsuba = TsubaMaterial.無,
+        TsukaMaterial tsuka = TsukaMaterial.無)
     {
+        const uint GameMaxDurability = 2000;
+
         public IEnumerable<YaibaMaterial> YaibaList { get; private set; } = Enum.GetValues<YaibaMaterial>();
         public IEnumerable<TsubaMaterial> TsubaList { get; private set; } = Enum.GetValues<TsubaMaterial>();
         public IEnumerable<TsukaMaterial> TsukaList { get; private set; } = Enum.GetValues<TsukaMaterial>();
@@ -28,20 +34,100 @@ namespace WayOfTheSamurai4SaveEditor
         public uint Attack
         {
             get { return _attack; }
-            set { _attack = value; }
+            set
+            {
+                const uint GameMaxAttack = 2000;
+                if (value > GameMaxAttack)
+                {
+                    _attack = GameMaxAttack;
+                }
+                else
+                {
+                    _attack = value;
+                }
+            }
         }
-        public uint Taikyu { get; set; }
-        public uint MaxTaikyu { get; set; }
-        public uint Shitsu { get; set; }
-        public uint MaxShitsu { get; set; }
+
+        public uint Durability
+        {
+            get { return _durability; }
+            set
+            {
+                if (value > MaxDurability)
+                {
+                    _durability = MaxDurability;
+                }
+                else
+                {
+                    _durability = value;
+                }
+            }
+        }
+
+        public uint MaxDurability
+        {
+            get { return _maxDurability; }
+            set
+            {
+                if (value > GameMaxDurability)
+                {
+                    _maxDurability = GameMaxDurability;
+                }
+                else
+                {
+                    _maxDurability = value;
+                }
+            }
+        }
+
+        public uint Quality { get; set; }
+        public uint MaxQuality { get; set; }
         public bool IsOriginal { get; set; } = false;
-        public YaibaMaterial Yaiba { get; set; }
-        public TsubaMaterial Tsuba { get; set; }
-        public TsukaMaterial Tsuka { get; set; }
+        public YaibaMaterial Yaiba
+        {
+            get { return _yaiba; }
+            set
+            {
+                if (IsOriginal)
+                {
+                    _yaiba = value;
+                }
+            }
+        }
+
+        public TsubaMaterial Tsuba
+        {
+            get { return _tsuba; }
+            set
+            {
+                if (IsOriginal)
+                {
+                    _tsuba = value;
+                }
+            }
+        }
+
+        public TsukaMaterial Tsuka
+        {
+            get { return _tsuka; }
+            set
+            {
+                if (IsOriginal)
+                {
+                    _tsuka = value;
+                }
+            }
+        }
+
         public Mei Mei { get; set; }
-        public uint Zansatsu { get; set; }
+        public uint KillCount { get; set; }
 
         private string _name = name;
         private uint _attack;
+        private uint _durability;
+        private uint _maxDurability;
+        private YaibaMaterial _yaiba = yaiba;
+        private TsubaMaterial _tsuba = tsuba;
+        private TsukaMaterial _tsuka = tsuka;
     }
 }

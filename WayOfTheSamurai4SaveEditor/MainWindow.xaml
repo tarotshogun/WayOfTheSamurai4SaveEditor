@@ -28,31 +28,31 @@
                 <DataGridTextColumn Header="質	" Binding="{Binding Shitsu}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="最大質" Binding="{Binding MaxShitsu}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="斬殺数" Binding="{Binding Zansatsu}" IsReadOnly="True"/>
-                <DataGridTemplateColumn Header="刃" IsReadOnly="True">
+                <DataGridTemplateColumn Header="刃">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox ItemsSource="{Binding YaibaList}" SelectedValue="{Binding Yaiba}" />
+                            <ComboBox ItemsSource="{Binding YaibaList}" SelectedValue="{Binding Yaiba}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="鍔" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox ItemsSource="{Binding TsubaList}" SelectedValue="{Binding Tsuba}" />
+                            <ComboBox ItemsSource="{Binding TsubaList}" SelectedValue="{Binding Tsuba}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="柄" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox ItemsSource="{Binding TsukaList}" SelectedValue="{Binding Tsuka}" />
+                            <ComboBox ItemsSource="{Binding TsukaList}" SelectedValue="{Binding Tsuka}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="銘" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox ItemsSource="{Binding MeiList}" SelectedValue="{Binding Mei}" />
+                            <ComboBox ItemsSource="{Binding MeiList}" SelectedValue="{Binding Mei}" IsReadOnly="True" IsHitTestVisible="False" IsTabStop="False"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

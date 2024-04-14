@@ -27,6 +27,7 @@ namespace WayOfTheSamurai4SaveEditor
             Array.Copy(Encoding.Unicode.GetBytes(character.Name), raw.Name, character.Name.Length);
             Array.Copy(BitConverter.GetBytes(character.Money), raw.Money, sizeof(uint));
             Array.Copy(BitConverter.GetBytes(character.Cashbox), raw.Cashbox, sizeof(uint));
+            Array.Copy(BitConverter.GetBytes(character.SamuraiPoint), raw.SamuraiPoint, sizeof(uint));
         }
     }
 }

@@ -54,6 +54,7 @@ namespace WayOfTheSamurai4SaveEditor
             var quality = BitConverter.ToUInt16(raw.Quality);
             var maxQuality = BitConverter.ToUInt16(raw.MaxQuality);
             var killCount = BitConverter.ToUInt16(raw.KillCount);
+            var totalRecoveredDurability = BitConverter.ToUInt32(raw.TotalRecoveredDurability);
             var yaiba = ToEnum<YaibaMaterial>(raw.Yaiba);
             var tsuba = ToEnum<TsubaMaterial>(raw.Tsuba);
             var tsuka = ToTsukaMaterial(raw.Tsuka);
@@ -66,16 +67,15 @@ namespace WayOfTheSamurai4SaveEditor
             Debug.Write(string.Format("mei: 0x{0:X8} ", ToUInt32(raw.Mei)));
             Debug.WriteLine("");
 
-            return new Weapon(name, yaiba, tsuba, tsuka)
+            return new Weapon(name,durability, maxDurability, yaiba, tsuba, tsuka)
             {
                 Attack = attack,
                 IsOriginal = (weaponId == 0xFFFF),
-                Durability = durability,
-                MaxDurability = maxDurability,
                 Quality = quality,
                 MaxQuality = maxQuality,
                 KillCount = killCount,
                 Mei = mei,
+                TotalRecoveredDurability = totalRecoveredDurability,
             };
         }
 

@@ -54,7 +54,7 @@ namespace WayOfTheSamurai4SaveEditor
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
         public byte[] PaddingAD78_AD7B; // つま斬り数2?
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-        public byte[] TaikyuKaihuku;
+        public byte[] TotalRecoveredDurability;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public byte[] Durability;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]

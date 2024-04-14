@@ -23,29 +23,39 @@
                 <DataGridCheckBoxColumn Header="自作" Binding="{Binding IsOriginal}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="名前" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="攻撃力" Binding="{Binding Attack}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="耐久度	" Binding="{Binding MaxTaikyu}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="最大耐久度" Binding="{Binding Taikyu}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="質	" Binding="{Binding Shitsu}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="最大質" Binding="{Binding MaxShitsu}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="斬殺数" Binding="{Binding Zansatsu}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="耐久度	" Binding="{Binding Durability}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="最大耐久度" Binding="{Binding MaxDurability}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="質	" Binding="{Binding Quality}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="最大質" Binding="{Binding MaxQuality}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="斬殺数" Binding="{Binding KillCount}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="総回復耐久値" Binding="{Binding TotalRecoveredDurability}" IsReadOnly="True"/>
                 <DataGridTemplateColumn Header="刃">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox ItemsSource="{Binding YaibaList}" SelectedValue="{Binding Yaiba}"/>
+                            <ComboBox 
+                                ItemsSource="{Binding YaibaList}" 
+                                SelectedValue="{Binding Yaiba, UpdateSourceTrigger=PropertyChanged}" 
+                                IsEnabled="{Binding IsOriginal}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="鍔" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox ItemsSource="{Binding TsubaList}" SelectedValue="{Binding Tsuba}"/>
+                            <ComboBox 
+                                ItemsSource="{Binding TsubaList}" 
+                                SelectedValue="{Binding Tsuba, UpdateSourceTrigger=PropertyChanged}" 
+                                IsEnabled="{Binding IsOriginal}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="柄" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox ItemsSource="{Binding TsukaList}" SelectedValue="{Binding Tsuka}"/>
+                            <ComboBox 
+                                ItemsSource="{Binding TsubaList}" 
+                                SelectedValue="{Binding Tsuba, UpdateSourceTrigger=PropertyChanged}" 
+                                IsEnabled="{Binding IsOriginal}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

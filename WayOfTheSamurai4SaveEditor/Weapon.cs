@@ -8,11 +8,13 @@ namespace WayOfTheSamurai4SaveEditor
 {
     public class Weapon(
         string name = "",
+        ushort durability = 0,
+        ushort MaxDurability = 0,
         YaibaMaterial yaiba = YaibaMaterial.無,
         TsubaMaterial tsuba = TsubaMaterial.無,
         TsukaMaterial tsuka = TsukaMaterial.無)
     {
-        const uint GameMaxDurability = 2000;
+        const ushort GameMaxDurability = 2000;
 
         public IEnumerable<YaibaMaterial> YaibaList { get; private set; } = Enum.GetValues<YaibaMaterial>();
         public IEnumerable<TsubaMaterial> TsubaList { get; private set; } = Enum.GetValues<TsubaMaterial>();
@@ -31,12 +33,12 @@ namespace WayOfTheSamurai4SaveEditor
                 }
             }
         }
-        public uint Attack
+        public ushort Attack
         {
             get { return _attack; }
             set
             {
-                const uint GameMaxAttack = 2000;
+                const ushort GameMaxAttack = 2000;
                 if (value > GameMaxAttack)
                 {
                     _attack = GameMaxAttack;
@@ -48,7 +50,7 @@ namespace WayOfTheSamurai4SaveEditor
             }
         }
 
-        public uint Durability
+        public ushort Durability
         {
             get { return _durability; }
             set
@@ -64,7 +66,7 @@ namespace WayOfTheSamurai4SaveEditor
             }
         }
 
-        public uint MaxDurability
+        public ushort MaxDurability
         {
             get { return _maxDurability; }
             set
@@ -121,11 +123,12 @@ namespace WayOfTheSamurai4SaveEditor
 
         public Mei Mei { get; set; }
         public uint KillCount { get; set; }
+        public uint TotalRecoveredDurability {  get; set; } 
 
         private string _name = name;
-        private uint _attack;
-        private uint _durability;
-        private uint _maxDurability;
+        private ushort _attack;
+        private ushort _durability = durability;
+        private ushort _maxDurability = MaxDurability;
         private YaibaMaterial _yaiba = yaiba;
         private TsubaMaterial _tsuba = tsuba;
         private TsukaMaterial _tsuka = tsuka;

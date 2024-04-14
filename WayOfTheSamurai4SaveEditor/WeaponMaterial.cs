@@ -150,7 +150,7 @@ namespace WayOfTheSamurai4SaveEditor
         数寄者 = 0x000E,
         日本橋 = 0x00F2,
         曼珠沙華 = 0x0024,
-        政重 = 0x00FD,
+        柾重 = 0x00FD,
         正道刀 = 0x00DA,
         氷天過 = 0x007A,
         汎来巣 = 0x00DD,

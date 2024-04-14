@@ -90,14 +90,6 @@ namespace WayOfTheSamurai4SaveEditor
             {
                 SaveData.Write(path);
             }
-            catch (FileNotFoundException)
-            {
-                string messageBoxText = "ファイルが見つかりません。\nファイル名を確認して再実行してください";
-                string caption = "開く";
-                var button = MessageBoxButton.OK;
-                var icon = MessageBoxImage.Warning;
-                MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
-            }
             catch (Exception ex)
             {
                 string messageBoxText = ex.Message;

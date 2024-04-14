@@ -9,8 +9,8 @@ namespace WayOfTheSamurai4SaveEditor
     public class Weapon(string name = "")
     {
         public IEnumerable<YaibaMaterial> YaibaList { get; private set; } = Enum.GetValues<YaibaMaterial>();
-        public IEnumerable<YaibaMaterial> TsubaList { get; private set; } = Enum.GetValues<YaibaMaterial>();
-        public IEnumerable<YaibaMaterial> TsukaList { get; private set; } = Enum.GetValues<YaibaMaterial>();
+        public IEnumerable<TsubaMaterial> TsubaList { get; private set; } = Enum.GetValues<TsubaMaterial>();
+        public IEnumerable<TsukaMaterial> TsukaList { get; private set; } = Enum.GetValues<TsukaMaterial>();
         public IEnumerable<Mei> MeiList { get; private set; } = Enum.GetValues<Mei>();
 
         // 17文字+終端文字

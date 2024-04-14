@@ -18,7 +18,7 @@
             <Setter Property="CanUserSortColumns" Value="False"/>
         </Style>
         <DataGrid x:Key="WeaponsDataGrid" x:Name="bukiDansuDataGrid" Style="{StaticResource CommonDataGridStyle}" 
-                            ItemsSource="{Binding BukiDansu}" d:ItemsSource="{d:SampleData ItemCount=100}">
+                            ItemsSource="{Binding .}" d:ItemsSource="{d:SampleData ItemCount=100}">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="自作" Binding="{Binding IsOriginal}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="名前" Binding="{Binding Name}"/>
@@ -28,14 +28,28 @@
                 <DataGridTextColumn Header="質	" Binding="{Binding Shitsu}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="最大質" Binding="{Binding MaxShitsu}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="斬殺数" Binding="{Binding Zansatsu}" IsReadOnly="True"/>
-                <DataGridTemplateColumn Header="刃">
+                <DataGridTemplateColumn Header="刃" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <ComboBox ItemsSource="{Binding YaibaList}" SelectedValue="{Binding Yaiba}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="銘">
+                <DataGridTemplateColumn Header="鍔" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding TsubaList}" SelectedValue="{Binding Tsuba}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="柄" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding TsukaList}" SelectedValue="{Binding Tsuka}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="銘" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <ComboBox ItemsSource="{Binding MeiList}" SelectedValue="{Binding Mei}" />
@@ -86,7 +100,7 @@
                 </TabItem>
                 <TabItem Header="武器箪笥">
                     <DockPanel LastChildFill="True">
-                        <ContentControl Grid.Row="0" Grid.Column="0" Content="{StaticResource WeaponsDataGrid}"/>
+                        <ContentControl Grid.Row="0" Grid.Column="0" Content="{StaticResource WeaponsDataGrid}" DataContext="{Binding Path=BukiDansu}"/>
                     </DockPanel>
                 </TabItem>
                 <TabItem Header="流派" IsEnabled="False">

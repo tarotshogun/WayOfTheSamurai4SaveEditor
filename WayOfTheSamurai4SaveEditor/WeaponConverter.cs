@@ -16,7 +16,7 @@ namespace WayOfTheSamurai4SaveEditor
             var weapons = new ObservableCollection<Weapon>();
             foreach (var weapon in raw)
             {
-                weapons.Add(ToWepon(in weapon));
+                weapons.Add(ToWeapon(in weapon));
             }
             return weapons;
         }
@@ -35,7 +35,7 @@ namespace WayOfTheSamurai4SaveEditor
             Array.Copy(Encoding.Unicode.GetBytes(weapon.Name), raw.Name, 64);
         }
 
-        static Weapon ToWepon(ref readonly RawBukiDansuWeapon raw)
+        static Weapon ToWeapon(ref readonly RawBukiDansuWeapon raw)
         {
             string name = Encoding.Unicode.GetString(raw.Name);
             if (name.Equals(""))

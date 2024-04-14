@@ -11,13 +11,18 @@ namespace WayOfTheSamurai4SaveEditor
     {
         public static ObservableCollection<MainCharacter> ToMainCharacters(ref readonly RawSaveData raw)
         {
-            string name = Encoding.Unicode.GetString(raw.Name).TrimEnd('\0');
+            string name = Encoding.Unicode.GetString(raw.Name);
             uint money = BitConverter.ToUInt16(raw.Money);
 
             return
             [
                 new MainCharacter{Name=name, Money=money},
             ];
+        }
+        public static void ToRawMainCharacter(MainCharacter weapon, ref RawSaveData raw)
+        {
+            // TODO: Delete the magic number
+            Array.Copy(Encoding.Unicode.GetBytes(weapon.Name), raw.Name, 64);
         }
     }
 }

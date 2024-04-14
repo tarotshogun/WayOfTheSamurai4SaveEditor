@@ -9,7 +9,7 @@ namespace WayOfTheSamurai4SaveEditor
 {
     // メンバ変数の名前は武器箪笥最初の武器のアドレスを参照
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct RawBukiDansuWeapons
+    public struct RawBukiDansuWeapon
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
         public byte[] PaddingACEE_ACF3;
@@ -91,7 +91,7 @@ namespace WayOfTheSamurai4SaveEditor
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 14)]
         public byte[] PaddingACE0_ACDF;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 200)] // 武器箪笥四まで解放したときの値
-        public RawBukiDansuWeapons[] BukiDansu;
+        public RawBukiDansuWeapon[] BukiDansu;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 221634)]
         public byte[] Padding;
     }

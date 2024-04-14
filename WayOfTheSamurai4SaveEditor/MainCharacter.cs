@@ -62,6 +62,7 @@ namespace WayOfTheSamurai4SaveEditor
         public float Hp { get; set; }
         public float Katsuryoku { get; set; }
         public float MaxKatsuryoku { get; set; }
+        public uint SamuraiPoint { get; set; }
 
         string _name = "";
         uint _money = 0;

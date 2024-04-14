@@ -14,10 +14,11 @@ namespace WayOfTheSamurai4SaveEditor
             var name = Encoding.Unicode.GetString(raw.Name);
             var money = BitConverter.ToUInt32(raw.Money);
             var cashbox = BitConverter.ToUInt32(raw.Cashbox);
+            var samuraiPoint = BitConverter.ToUInt32(raw.SamuraiPoint);
 
             return
             [
-                new MainCharacter{Name=name, Money=money, Cashbox=cashbox},
+                new MainCharacter{Name=name, Money=money, Cashbox=cashbox, SamuraiPoint = samuraiPoint},
             ];
         }
 

@@ -11,7 +11,7 @@ namespace WayOfTheSamurai4SaveEditor
 {
     public static class WeaponConverter
     {
-        public static ObservableCollection<Weapon> ToWeapons(RawBukiDansuWeapon[] raw)
+        public static ObservableCollection<Weapon> ToWeapons(RawCabinetWeapon[] raw)
         {
             var weapons = new ObservableCollection<Weapon>();
             foreach (var weapon in raw)
@@ -21,7 +21,7 @@ namespace WayOfTheSamurai4SaveEditor
             return weapons;
         }
 
-        public static void ToRawBukiDansuWeapons(ObservableCollection<Weapon> weapons, ref RawBukiDansuWeapon[] raw)
+        public static void ToRawBukiDansuWeapons(ObservableCollection<Weapon> weapons, ref RawCabinetWeapon[] raw)
         {
             for (int i = 0; i < weapons.Count; i++)
             {
@@ -29,13 +29,13 @@ namespace WayOfTheSamurai4SaveEditor
             }
         }
 
-        static void ToRawBukiDansuWeapon(Weapon weapon, ref RawBukiDansuWeapon raw)
+        static void ToRawBukiDansuWeapon(Weapon weapon, ref RawCabinetWeapon raw)
         {
             // TODO: Delete the magic number
             Array.Copy(Encoding.Unicode.GetBytes(weapon.Name), raw.Name, 64);
         }
 
-        static Weapon ToWeapon(ref readonly RawBukiDansuWeapon raw)
+        static Weapon ToWeapon(ref readonly RawCabinetWeapon raw)
         {
             string name = Encoding.Unicode.GetString(raw.Name);
             if (name.Equals(""))

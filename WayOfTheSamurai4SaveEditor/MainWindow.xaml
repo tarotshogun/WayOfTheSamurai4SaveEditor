@@ -90,6 +90,7 @@
                                 <DataGridTextColumn Header="氏名" Binding="{Binding Name}"/>
                                 <DataGridTextColumn Header="所持金" Binding="{Binding Money}"/>
                                 <DataGridTextColumn Header="金庫" Binding="{Binding Cashbox}"/>
+                                <DataGridTextColumn Header="侍点" Binding="{Binding SamuraiPoint}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </DockPanel>

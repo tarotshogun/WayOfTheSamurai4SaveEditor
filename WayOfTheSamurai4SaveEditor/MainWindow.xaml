@@ -22,13 +22,13 @@
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="自作" Binding="{Binding IsOriginal}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="名前" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="攻撃力" Binding="{Binding Attack, StringFormat=N0}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="耐久度	" Binding="{Binding Durability, StringFormat=N0}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="最大耐久度" Binding="{Binding MaxDurability, StringFormat=N0}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="質	" Binding="{Binding Quality}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="最大質" Binding="{Binding MaxQuality}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="斬殺数" Binding="{Binding KillCount, StringFormat=N0}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="総回復耐久値" Binding="{Binding TotalRecoveredDurability, StringFormat=N0}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="攻撃力" Binding="{Binding Attack, StringFormat=N0}"/>
+                <DataGridTextColumn Header="耐久度	" Binding="{Binding Durability, StringFormat=N0}"/>
+                <DataGridTextColumn Header="最大耐久度" Binding="{Binding MaxDurability, StringFormat=N0}"/>
+                <DataGridTextColumn Header="質	" Binding="{Binding Quality}"/>
+                <DataGridTextColumn Header="最大質" Binding="{Binding MaxQuality}"/>
+                <DataGridTextColumn Header="斬殺数" Binding="{Binding KillCount, StringFormat=N0}"/>
+                <DataGridTextColumn Header="総回復耐久値" Binding="{Binding TotalRecoveredDurability, StringFormat=N0}"/>
                 <DataGridTemplateColumn Header="刃">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -39,7 +39,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="鍔" IsReadOnly="True">
+                <DataGridTemplateColumn Header="鍔">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <ComboBox 
@@ -49,7 +49,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="柄" IsReadOnly="True">
+                <DataGridTemplateColumn Header="柄">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <ComboBox 
@@ -59,10 +59,10 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="銘" IsReadOnly="True">
+                <DataGridTemplateColumn Header="銘">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox ItemsSource="{Binding MeiList}" SelectedValue="{Binding Mei}" IsReadOnly="True" IsHitTestVisible="False" IsTabStop="False"/>
+                            <ComboBox ItemsSource="{Binding MeiList}" SelectedValue="{Binding Mei}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -111,7 +111,7 @@
                         </DataGrid>
                     </DockPanel>
                 </TabItem>
-                <TabItem Header="武器箪笥">
+                <TabItem Header="武器箪笥" Height="22" Margin="-2,-2,-2,0" VerticalAlignment="Top">
                     <DockPanel LastChildFill="True">
                         <ContentControl Content="{StaticResource WeaponsDataGrid}" DataContext="{Binding CabinetWeapons}"/>
                     </DockPanel>

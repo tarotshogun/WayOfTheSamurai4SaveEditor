@@ -21,15 +21,15 @@ namespace WayOfTheSamurai4SaveEditor
             return weapons;
         }
 
-        public static void ToRawBukiDansuWeapons(ObservableCollection<Weapon> weapons, ref RawCabinetWeapon[] raw)
+        public static void ToRawCabinetWeapons(ObservableCollection<Weapon> weapons, ref RawCabinetWeapon[] raw)
         {
             for (int i = 0; i < weapons.Count; i++)
             {
-                ToRawBukiDansuWeapon(weapons[i], ref raw[i]);
+                ToRawCabinetWeapon(weapons[i], ref raw[i]);
             }
         }
 
-        static void ToRawBukiDansuWeapon(Weapon weapon, ref RawCabinetWeapon raw)
+        static void ToRawCabinetWeapon(Weapon weapon, ref RawCabinetWeapon raw)
         {
             // TODO: Delete the magic number
             Array.Copy(Encoding.Unicode.GetBytes(weapon.Name), raw.Name, 64);

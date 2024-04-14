@@ -84,7 +84,7 @@
             <TabControl x:Name="tabControl">
                 <TabItem Header="主人公情報">
                     <DockPanel LastChildFill="True">
-                        <DataGrid x:Name="mainCharacterDataGrid" Style="{StaticResource CommonDataGridStyle}" 
+                        <DataGrid x:Name="MainCharacterDataGrid" Style="{StaticResource CommonDataGridStyle}" 
                                   ItemsSource="{Binding MainCharacters}" d:ItemsSource="{d:SampleData ItemCount=1}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="氏名" Binding="{Binding Name}"/>
@@ -99,21 +99,21 @@
                 </TabItem>
                 <TabItem Header="帯刀中" IsEnabled="False">
                     <DockPanel LastChildFill="True">
-                        <DataGrid x:Name="taitouDataGrid" Style="{StaticResource CommonDataGridStyle}" 
-                                  ItemsSource="{Binding Taitou}" d:ItemsSource="{d:SampleData ItemCount=3}">
+                        <DataGrid x:Name="CarriedWeaponsDataGrid" Style="{StaticResource CommonDataGridStyle}" 
+                                  ItemsSource="{Binding CarriedWeapons}" d:ItemsSource="{d:SampleData ItemCount=3}">
                         </DataGrid>
                     </DockPanel>
                 </TabItem>
                 <TabItem Header="武器袋" IsEnabled="False">
                     <DockPanel LastChildFill="True">
-                        <DataGrid x:Name="bukiBukuroDataGrid" Style="{StaticResource CommonDataGridStyle}" 
-                                  ItemsSource="{Binding BukiBukuro}" d:ItemsSource="{d:SampleData ItemCount=10}">
+                        <DataGrid x:Name="BaggedWeaponsDataGrid" Style="{StaticResource CommonDataGridStyle}" 
+                                  ItemsSource="{Binding BaggedWeapons}" d:ItemsSource="{d:SampleData ItemCount=10}">
                         </DataGrid>
                     </DockPanel>
                 </TabItem>
                 <TabItem Header="武器箪笥">
                     <DockPanel LastChildFill="True">
-                        <ContentControl Grid.Row="0" Grid.Column="0" Content="{StaticResource WeaponsDataGrid}" DataContext="{Binding Path=BukiDansu}"/>
+                        <ContentControl Grid.Row="0" Grid.Column="0" Content="{StaticResource WeaponsDataGrid}" DataContext="{Binding CabinetWeapons}"/>
                     </DockPanel>
                 </TabItem>
                 <TabItem Header="流派" IsEnabled="False">

@@ -11,9 +11,9 @@ namespace WayOfTheSamurai4SaveEditor
     public class SaveDataFile
     {
         public ObservableCollection<MainCharacter> MainCharacters { get; set; } = [];
-        public ObservableCollection<Weapon> Taitou { get; set; } = [];
-        public ObservableCollection<Weapon> BukiBukuro { get; set; } = [];
-        public ObservableCollection<Weapon> BukiDansu { get; set; } = [];
+        public ObservableCollection<Weapon> CarriedWeapons { get; set; } = [];
+        public ObservableCollection<Weapon> BaggedWeapons { get; set; } = [];
+        public ObservableCollection<Weapon> CabinetWeapons { get; set; } = [];
         public string Path { get; private set; } = "";
         
         private RawSaveData _raw = new();
@@ -28,7 +28,7 @@ namespace WayOfTheSamurai4SaveEditor
         {
             _raw = SaveDataAccessor.Load(path);
             MainCharacters = MainCharacterConverter.ToMainCharacters(_raw);
-            BukiDansu = WeaponConverter.ToWeapons(_raw.CabinetWeapons);
+            CabinetWeapons = WeaponConverter.ToWeapons(_raw.CabinetWeapons);
         }
 
         public void Write()
@@ -39,7 +39,7 @@ namespace WayOfTheSamurai4SaveEditor
         public void Write(string path)
         {
             MainCharacterConverter.ToRawMainCharacter(MainCharacters[0], ref _raw);
-            WeaponConverter.ToRawBukiDansuWeapons(BukiDansu, ref _raw.CabinetWeapons);
+            WeaponConverter.ToRawCabinetWeapons(CabinetWeapons, ref _raw.CabinetWeapons);
             SaveDataAccessor.Save(path, _raw);
         }
     }

@@ -58,12 +58,10 @@ namespace WayOfTheSamurai4SaveEditor
             }
         }
 
-        public int Day { get; }
-        public int Time { get; }
-        public int MaxHp { get; set; }
-        public int Hp { get; set; }
-        public int Katsuryoku { get; set; }
-        public int MaxKatsuryoku { get; set; }
+        public float MaxHp { get; set; }
+        public float Hp { get; set; }
+        public float Katsuryoku { get; set; }
+        public float MaxKatsuryoku { get; set; }
 
         string _name = "";
         uint _money = 0;

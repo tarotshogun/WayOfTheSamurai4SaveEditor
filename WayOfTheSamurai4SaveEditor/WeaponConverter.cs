@@ -46,8 +46,8 @@ namespace WayOfTheSamurai4SaveEditor
             var attack = BitConverter.ToUInt16(raw.Attack);
             var weaponId = BitConverter.ToUInt16(raw.WeaponId);
             var uniqueId = BitConverter.ToUInt64(
-                [raw.UniqueWeponId[0], raw.UniqueWeponId[1], raw.UniqueWeponId[2],
-                raw.UniqueWeponId[3], raw.UniqueWeponId[4], raw.UniqueWeponId[5], 0x00, 0x00]
+                [raw.UniqueWeaponId[0], raw.UniqueWeaponId[1], raw.UniqueWeaponId[2],
+                raw.UniqueWeaponId[3], raw.UniqueWeaponId[4], raw.UniqueWeaponId[5], 0x00, 0x00]
             );
             var durability = BitConverter.ToUInt16(raw.Durability);
             var maxDurability = BitConverter.ToUInt16(raw.MaxDurability);
@@ -81,7 +81,7 @@ namespace WayOfTheSamurai4SaveEditor
 
         static uint ToUInt32(byte[] raw)
         {
-            // ToUInt32は少なくとも4byteのバイト列を必要とするため、値をコピーする
+            // ToUInt32は少なくとも4byteのバイト列を必要とするため、リサイズする
             Debug.Assert(raw.Length < 4);
             byte[] extendedRaw = new byte[4];
             Array.Copy(raw, extendedRaw, raw.Length);

@@ -53,8 +53,8 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <ComboBox 
-                                ItemsSource="{Binding TsubaList}" 
-                                SelectedValue="{Binding Tsuba, UpdateSourceTrigger=PropertyChanged}" 
+                                ItemsSource="{Binding TsukaList}" 
+                                SelectedValue="{Binding Tsuka, UpdateSourceTrigger=PropertyChanged}" 
                                 IsEnabled="{Binding IsOriginal}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

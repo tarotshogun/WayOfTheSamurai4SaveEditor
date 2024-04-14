@@ -5,6 +5,21 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+解析メモ
+
+B3C uint8 侍点
+
+35A8 float 体力 9999が最大（461C3C00）
+35B0 float 活力 9999が最大（461C3C00）
+
+5B90 ~ 貴重品
+0029XXXX 0029がくず鉄でXXXXが個数
+002AXXXX 0029が卸し金でXXXXが個数
+002BXXXX 0029が堂島鋼でXXXXが個数
+002CXXXX 0029が緋緋色金でXXXXが個数
+*/
+
 namespace WayOfTheSamurai4SaveEditor
 {
     // メンバ変数の名前は武器箪笥最初の武器のアドレスを参照
@@ -22,7 +37,7 @@ namespace WayOfTheSamurai4SaveEditor
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public byte[] Tsuka;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public byte[] UniqueWeponId;
+        public byte[] UniqueWeaponId;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public byte[] Attack;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
@@ -34,17 +49,17 @@ namespace WayOfTheSamurai4SaveEditor
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
         public byte[] PaddingAD0C_AD11; // 魅力のヘッダ？
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] Miryoku1;
+        public byte[] Attraction1;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] NumMiryoku1;
+        public byte[] NumAttraction1;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] Miryoku2;
+        public byte[] Attraction2;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] NumMiryoku2;
+        public byte[] NumAttraction2;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] Miryoku3;
+        public byte[] Attraction3;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] NumMiryoku3;
+        public byte[] NumAttraction3;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]  // 実際は17文字までしか入力できないようです
         public byte[] Name;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 22)]

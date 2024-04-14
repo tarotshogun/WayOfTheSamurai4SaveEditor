@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 B3C uint8 侍点
 
 35A8 float 体力 9999が最大（461C3C00）
-35B0 float 活力 9999が最大（461C3C00）
+35A4 float 活力 9999が最大（461C3C00）
 
 5B90 ~ 貴重品
 0029XXXX 0029がくず鉄でXXXXが個数
@@ -35,7 +35,7 @@ namespace WayOfTheSamurai4SaveEditor
         public byte[] Padding0010_00CF;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 12)]
         public byte[] Padding00D0_00DB;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]  // UTF-16で31文字分の文字列+終端文字
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
         public byte[] Name;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
         public byte[] Padding011C_011F;
@@ -45,8 +45,18 @@ namespace WayOfTheSamurai4SaveEditor
         public byte[] Padding0B30_0B3B;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
         public byte[] SamuraiPoint;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 41376)] 
-        public byte[] Padding0B40_ACDF;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10848)] 
+        public byte[] Padding0B40_359F;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+        public byte[] Padding35A0_35A4;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+        public byte[] Katsuryoku;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+        public byte[] Hp;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+        public byte[] Padding35AC_35AF;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 30512)]
+        public byte[] Padding35B0_ACDF;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 14)]
         public byte[] PaddingACE0_ACED;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 200)] // 武器箪笥四まで解放したときの値

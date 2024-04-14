@@ -19,10 +19,11 @@ namespace WayOfTheSamurai4SaveEditor
                 new MainCharacter{Name=name, Money=money},
             ];
         }
-        public static void ToRawMainCharacter(MainCharacter weapon, ref RawSaveData raw)
+        public static void ToRawMainCharacter(MainCharacter character, ref RawSaveData raw)
         {
             // TODO: Delete the magic number
-            Array.Copy(Encoding.Unicode.GetBytes(weapon.Name), raw.Name, 64);
+            Array.Copy(Encoding.Unicode.GetBytes(character.Name), raw.Name, 64);
+            Array.Copy(BitConverter.GetBytes(character.Money), raw.Money, 2);
         }
     }
 }

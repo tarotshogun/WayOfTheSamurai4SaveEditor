@@ -113,7 +113,7 @@
                 </TabItem>
                 <TabItem Header="武器箪笥">
                     <DockPanel LastChildFill="True">
-                        <ContentControl Grid.Row="0" Grid.Column="0" Content="{StaticResource WeaponsDataGrid}" DataContext="{Binding CabinetWeapons}"/>
+                        <ContentControl Content="{StaticResource WeaponsDataGrid}" DataContext="{Binding CabinetWeapons}"/>
                     </DockPanel>
                 </TabItem>
                 <TabItem Header="流派" IsEnabled="False">

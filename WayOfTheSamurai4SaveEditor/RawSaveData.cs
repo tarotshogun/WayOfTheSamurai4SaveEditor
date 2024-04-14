@@ -28,9 +28,9 @@ namespace WayOfTheSamurai4SaveEditor
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public byte[] MaxTaikyu;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] Shitsu;
+        public byte[] Quality;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] MaxShitsu;
+        public byte[] MaxQuality;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
         public byte[] PaddingAD0C_AD11; // 魅力のヘッダ？
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
@@ -74,10 +74,10 @@ namespace WayOfTheSamurai4SaveEditor
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
         public byte[] Padding0000_0007;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
         public byte[] Money;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public byte[] Padding000A_000F;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+        public byte[] Cashbox;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 192)] // 16 * 12 lines
         public byte[] Padding0010_00CF;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 12)]

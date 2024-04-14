@@ -6,9 +6,6 @@
         xmlns:local="clr-namespace:WayOfTheSamurai4SaveEditor"
         mc:Ignorable="d"
         Title="WayOfTheSamurai4SaveEditor" Height="450" Width="800">
-    <Window.DataContext>
-        <local:SaveDataViewModel/>
-    </Window.DataContext>
     <Window.Resources>
         <Style x:Key="CommonDataGridStyle" TargetType="DataGrid">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
@@ -25,12 +22,12 @@
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="自作" Binding="{Binding IsOriginal}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="名前" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="攻撃力" Binding="{Binding Attack}"/>
-                <DataGridTextColumn Header="耐久度	" Binding="{Binding MaxTaikyu}"/>
-                <DataGridTextColumn Header="最大耐久度" Binding="{Binding Taikyu}"/>
-                <DataGridTextColumn Header="質	" Binding="{Binding Shitsu}"/>
-                <DataGridTextColumn Header="最大質" Binding="{Binding MaxShitsu}"/>
-                <DataGridTextColumn Header="斬殺数" Binding="{Binding Zansatsu}"/>
+                <DataGridTextColumn Header="攻撃力" Binding="{Binding Attack}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="耐久度	" Binding="{Binding MaxTaikyu}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="最大耐久度" Binding="{Binding Taikyu}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="質	" Binding="{Binding Shitsu}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="最大質" Binding="{Binding MaxShitsu}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="斬殺数" Binding="{Binding Zansatsu}" IsReadOnly="True"/>
                 <DataGridTemplateColumn Header="刃">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -54,7 +51,7 @@
                 <MenuItem Header="ファイル">
                     <MenuItem Header="開く" Click="OpenFile_Click"/>
                     <MenuItem Header="保存" Click="SaveFile_Click"/>
-                    <MenuItem Header="名前を付けて保存" IsEnabled="False"/>
+                    <MenuItem Header="名前を付けて保存" Click="SaveAsFile_Click"/>
                 </MenuItem>
                 <MenuItem Header="ヘルプ">
                     <MenuItem Header="侍道4セーブエディタについて"/>
@@ -67,11 +64,8 @@
                                   ItemsSource="{Binding MainCharacters}" d:ItemsSource="{d:SampleData ItemCount=1}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="氏名" Binding="{Binding Name}"/>
-                                <DataGridTextColumn Header="命" Binding="{Binding Hp}"/>
-                                <DataGridTextColumn Header="最大命" Binding="{Binding MaxHp}"/>
-                                <DataGridTextColumn Header="活力" Binding="{Binding Katsuryoku}"/>
-                                <DataGridTextColumn Header="最大活力" Binding="{Binding MaxKatsuryoku}"/>
                                 <DataGridTextColumn Header="所持金" Binding="{Binding Money}"/>
+                                <DataGridTextColumn Header="金庫" Binding="{Binding Cashbox}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </DockPanel>

@@ -20,15 +20,11 @@ namespace WayOfTheSamurai4SaveEditor
     /// </summary>
     public partial class MainWindow : Window
     {
-        // TODO: Move to ViewModel
-        RawSaveData raw;
-        SaveDataViewModel save;
+        public SaveDataFile? SaveData { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
-            raw = new();
-            save = new();
         }
 
         private void OpenFile_Click(object sender, RoutedEventArgs e)
@@ -41,9 +37,8 @@ namespace WayOfTheSamurai4SaveEditor
 
             try
             {
-                raw = SaveDataAccessor.Load(dialog.FileName);
-                save = new SaveDataViewModel(raw);
-                DataContext = save;
+                SaveData = new SaveDataFile(dialog.FileName);
+                DataContext = SaveData;
             }
             catch (FileNotFoundException)
             {
@@ -65,19 +60,35 @@ namespace WayOfTheSamurai4SaveEditor
 
         private void SaveFile_Click(object sender, RoutedEventArgs e)
         {
+            if (SaveData is null)
+            {
+                return;
+            }
+
+            SaveFile(SaveData.Path);
+        }
+
+        private void SaveAsFile_Click(object sender, RoutedEventArgs e)
+        {
             var dialog = new SaveFileDialog();
             if (dialog.ShowDialog() == false)
             {
                 return;
             }
 
-            // クラス構成ぐちゃぐちゃですがな
-            MainCharacterConverter.ToRawMainCharacter(save.MainCharacters[0], ref raw);
-            WeaponConverter.ToRawBukiDansuWeapons(save.BukiDansu, ref raw.BukiDansu);
+            SaveFile(dialog.FileName);
+        }
+
+        private void SaveFile(string path)
+        {
+            if (SaveData is null)
+            {
+                return;
+            }
 
             try
             {
-                SaveDataAccessor.Save(dialog.FileName, raw);
+                SaveData.Write(path);
             }
             catch (FileNotFoundException)
             {
@@ -90,12 +101,11 @@ namespace WayOfTheSamurai4SaveEditor
             catch (Exception ex)
             {
                 string messageBoxText = ex.Message;
-                string caption = "開く";
+                string caption = "保存";
                 var button = MessageBoxButton.OK;
                 var icon = MessageBoxImage.Warning;
                 MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
             }
-
         }
     }
 }

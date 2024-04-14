@@ -9,21 +9,23 @@ namespace WayOfTheSamurai4SaveEditor
 {
     public static class MainCharacterConverter
     {
-        public static ObservableCollection<MainCharacter> ToMainCharacters(ref readonly RawSaveData raw)
+        public static ObservableCollection<MainCharacter> ToMainCharacters(RawSaveData raw)
         {
-            string name = Encoding.Unicode.GetString(raw.Name);
-            uint money = BitConverter.ToUInt16(raw.Money);
+            var name = Encoding.Unicode.GetString(raw.Name);
+            var money = BitConverter.ToUInt32(raw.Money);
+            var cashbox = BitConverter.ToUInt32(raw.Cashbox);
 
             return
             [
-                new MainCharacter{Name=name, Money=money},
+                new MainCharacter{Name=name, Money=money, Cashbox=cashbox},
             ];
         }
+
         public static void ToRawMainCharacter(MainCharacter character, ref RawSaveData raw)
         {
-            // TODO: Delete the magic number
-            Array.Copy(Encoding.Unicode.GetBytes(character.Name), raw.Name, 64);
-            Array.Copy(BitConverter.GetBytes(character.Money), raw.Money, 2);
+            Array.Copy(Encoding.Unicode.GetBytes(character.Name), raw.Name, character.Name.Length);
+            Array.Copy(BitConverter.GetBytes(character.Money), raw.Money, sizeof(uint));
+            Array.Copy(BitConverter.GetBytes(character.Cashbox), raw.Cashbox, sizeof(uint));
         }
     }
 }

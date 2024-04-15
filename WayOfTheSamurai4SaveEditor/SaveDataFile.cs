@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Shapes;
 
 namespace WayOfTheSamurai4SaveEditor
 {
@@ -21,7 +22,6 @@ namespace WayOfTheSamurai4SaveEditor
         public SaveDataFile(string path)
         {
             Read(path);
-            Path = path;
         }
 
         void Read(string path)
@@ -29,6 +29,7 @@ namespace WayOfTheSamurai4SaveEditor
             _raw = SaveDataAccessor.Load(path);
             MainCharacters = MainCharacterConverter.ToMainCharacters(_raw);
             CabinetWeapons = WeaponConverter.ToWeapons(_raw.CabinetWeapons);
+            Path = path;
         }
 
         public void Write()
@@ -41,6 +42,7 @@ namespace WayOfTheSamurai4SaveEditor
             MainCharacterConverter.ToRawMainCharacter(MainCharacters[0], ref _raw);
             WeaponConverter.ToRawCabinetWeapons(CabinetWeapons, ref _raw.CabinetWeapons);
             SaveDataAccessor.Save(path, _raw);
+            Path = path;
         }
     }
 }

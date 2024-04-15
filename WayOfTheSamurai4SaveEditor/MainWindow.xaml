@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:WayOfTheSamurai4SaveEditor"
         mc:Ignorable="d"
         Title="WayOfTheSamurai4SaveEditor" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
     <Window.Resources>
         <Style x:Key="CommonDataGridStyle" TargetType="DataGrid">
             <Setter Property="HorizontalAlignment" Value="Stretch" />

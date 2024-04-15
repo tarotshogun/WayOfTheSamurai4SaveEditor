@@ -94,7 +94,7 @@ namespace WayOfTheSamurai4SaveEditor
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
         public byte[] PaddingAD0C_AD11; // 魅力のヘッダ？違いそう
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-        public RawAttraction[] attractions;
+        public RawAttraction[] Attractions;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]  // 実際は17文字までしか入力できないようです
         public byte[] Name;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 22)]

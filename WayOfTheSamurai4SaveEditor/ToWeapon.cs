@@ -35,7 +35,7 @@ namespace WayOfTheSamurai4SaveEditor
             var tsuba = ToUInt32Enum<Tsuba>(To4Bytes(raw.Tsuba));
             var tsuka = ToTsuka(raw.Tsuka);
             var mei = ToUInt32Enum<Mei>(To4Bytes(raw.Mei));
-            var attractions = ToAttractions(raw.attractions);
+            var attractions = ToAttractions(raw.Attractions);
 
             Debug.Write(string.Format("[0x{0:X2}:{1:X}] ", weaponId, name));
             Debug.Write(string.Format("unique: 0x{0:X2} ", uniqueId));
@@ -82,6 +82,7 @@ namespace WayOfTheSamurai4SaveEditor
                 var attraction = ToAttraction(rawAttraction);
                 for(int i = 0; i < attraction.num; ++i)
                 {
+                    // なしのときは必ず`num`が0なのでAssertが成り立つ
                     Debug.Assert(attraction.attraction != Attraction.なし);
                     if(attraction.attraction != Attraction.なし && attractions.Count < MaxAttractionCount)
                     {

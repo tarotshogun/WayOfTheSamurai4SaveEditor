@@ -62,7 +62,7 @@
                         <DataTemplate>
                             <ComboBox 
                                 ItemsSource="{Binding TsukaList}" 
-                                SelectedValue="{Binding Tsuka, UpdateSourceTrigger=PropertyChanged}" 
+                                SelectedValue="{Binding Tsuka}" 
                                 IsEnabled="{Binding IsOriginal}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -70,28 +70,32 @@
                 <DataGridTemplateColumn Header="銘">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox ItemsSource="{Binding MeiList}" SelectedValue="{Binding Mei}"/>
+                            <ComboBox ItemsSource="{Binding MeiList}" 
+                                      SelectedValue="{Binding Mei, UpdateSourceTrigger=PropertyChanged}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="魅力1">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox ItemsSource="{Binding AttractionList}" SelectedValue="{Binding Attractions[0]}"/>
+                            <ComboBox ItemsSource="{Binding AttractionList}" 
+                                      SelectedValue="{Binding Attractions[0], UpdateSourceTrigger=PropertyChanged}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="魅力2">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox ItemsSource="{Binding AttractionList}" SelectedValue="{Binding Attractions[1]}"/>
+                            <ComboBox ItemsSource="{Binding AttractionList}" 
+                                      SelectedValue="{Binding Attractions[1], UpdateSourceTrigger=PropertyChanged}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="魅力3">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox ItemsSource="{Binding AttractionList}" SelectedValue="{Binding Attractions[2]}"/>
+                            <ComboBox ItemsSource="{Binding AttractionList}" 
+                                      SelectedValue="{Binding Attractions[2], UpdateSourceTrigger=PropertyChanged}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

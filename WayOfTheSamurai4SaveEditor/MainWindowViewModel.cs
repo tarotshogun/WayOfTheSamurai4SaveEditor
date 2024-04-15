@@ -38,8 +38,10 @@ namespace WayOfTheSamurai4SaveEditor
         public MainWindowViewModel()
         {
             OpenFileCommand = new DelegateCommand(OpenFile);
-            SaveFileCommand = new DelegateCommand(SaveFile, CanSaveFile);
-            SaveAsFileCommand = new DelegateCommand(SaveAsFile, CanSaveFile);
+            SaveFileCommand = new DelegateCommand(SaveFile, CanSaveFile)
+                .ObservesProperty(() => SaveData);
+            SaveAsFileCommand = new DelegateCommand(SaveAsFile, CanSaveFile)
+                .ObservesProperty(() => SaveData);
         }
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
@@ -80,7 +82,7 @@ namespace WayOfTheSamurai4SaveEditor
                 MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
             }
         }
-        
+
         void SaveFile()
         {
             Debug.Assert(SaveData is not null);

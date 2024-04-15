@@ -20,84 +20,9 @@ namespace WayOfTheSamurai4SaveEditor
     /// </summary>
     public partial class MainWindow : Window
     {
-        public SaveDataFile? SaveData { get; set; }
-
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void OpenFile_Click(object sender, RoutedEventArgs e)
-        {
-            var dialog = new OpenFileDialog();
-            if (dialog.ShowDialog() == false)
-            {
-                return;
-            }
-
-            try
-            {
-                SaveData = new SaveDataFile(dialog.FileName);
-                DataContext = SaveData;
-            }
-            catch (FileNotFoundException)
-            {
-                string messageBoxText = "ファイルが見つかりません。\nファイル名を確認して再実行してください";
-                string caption = "開く";
-                var button = MessageBoxButton.OK;
-                var icon = MessageBoxImage.Warning;
-                MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
-            }
-            catch (Exception ex)
-            {
-                string messageBoxText = ex.Message;
-                string caption = "開く";
-                var button = MessageBoxButton.OK;
-                var icon = MessageBoxImage.Warning;
-                MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
-            }
-        }
-
-        private void SaveFile_Click(object sender, RoutedEventArgs e)
-        {
-            if (SaveData is null)
-            {
-                return;
-            }
-
-            SaveFile(SaveData.Path);
-        }
-
-        private void SaveAsFile_Click(object sender, RoutedEventArgs e)
-        {
-            var dialog = new SaveFileDialog();
-            if (dialog.ShowDialog() == false)
-            {
-                return;
-            }
-
-            SaveFile(dialog.FileName);
-        }
-
-        private void SaveFile(string path)
-        {
-            if (SaveData is null)
-            {
-                return;
-            }
-
-            try
-            {
-                SaveData.Write(path);
-            }
-            catch (Exception ex)
-            {
-                string messageBoxText = ex.Message;
-                string caption = "保存";
-                var button = MessageBoxButton.OK;
-                var icon = MessageBoxImage.Warning;
-                MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
-            }
         }
     }
 }

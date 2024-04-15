@@ -149,10 +149,12 @@
                         <ContentControl Content="{StaticResource WeaponsDataGrid}" DataContext="{Binding SaveData.CabinetWeapons}"/>
                     </DockPanel>
                 </TabItem>
-                <TabItem Header="流派" IsEnabled="False">
+                <TabItem Header="流派">
                     <DockPanel LastChildFill="True">
-                        <DataGrid x:Name="ryuuhaDataGrid" Style="{StaticResource CommonDataGridStyle}" d:ItemsSource="{d:SampleData ItemCount=3}">
+                        <DataGrid x:Name="ryuuhaDataGrid" Style="{StaticResource CommonDataGridStyle}"
+                                   ItemsSource="{Binding SaveData.Ryuha}" d:ItemsSource="{d:SampleData ItemCount=64}">
                             <DataGrid.Columns>
+                                <DataGridTextColumn Header="流派" Binding="{Binding Name}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </DockPanel>

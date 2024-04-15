@@ -29,7 +29,8 @@ namespace WayOfTheSamurai4SaveEditor
             get { return _name; }
             set
             {
-                if (IsOriginal)
+                const int MaxNameLength = 31;
+                if (IsOriginal && value.Length <= MaxNameLength)
                 {
                     _name = value;
                 }
@@ -125,6 +126,7 @@ namespace WayOfTheSamurai4SaveEditor
 
         public Mei Mei { get; set; }
         public uint KillCount { get; set; }
+        public uint TsumagiriCount { get; set; }
         public uint TotalRecoveredDurability {  get; set; }
 
         public Attraction[] Attractions

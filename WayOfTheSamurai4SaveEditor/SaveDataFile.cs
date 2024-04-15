@@ -15,6 +15,7 @@ namespace WayOfTheSamurai4SaveEditor
         public ObservableCollection<Weapon> CarriedWeapons { get; set; } = [];
         public ObservableCollection<Weapon> BaggedWeapons { get; set; } = [];
         public ObservableCollection<Weapon> CabinetWeapons { get; set; } = [];
+        public ObservableCollection<Ryuha> Ryuha { get; set; } = [];
         public string Path { get; private set; } = "";
         
         private RawSaveData _raw = new();
@@ -29,6 +30,7 @@ namespace WayOfTheSamurai4SaveEditor
             _raw = SaveDataAccessor.Load(path);
             MainCharacters = MainCharacterConverter.ToMainCharacters(_raw);
             CabinetWeapons = WeaponConverter.ToWeapons(_raw.CabinetWeapons);
+            Ryuha = RyuhaConverter.ToRyuha(_raw.MyRyuhaName);
             Path = path;
         }
 
@@ -41,6 +43,7 @@ namespace WayOfTheSamurai4SaveEditor
         {
             MainCharacterConverter.ToRawMainCharacter(MainCharacters[0], ref _raw);
             WeaponConverter.ToRawCabinetWeapons(CabinetWeapons, ref _raw.CabinetWeapons);
+            RyuhaConverter.ToRawMyRyuhaName(Ryuha, ref _raw.MyRyuhaName);
             SaveDataAccessor.Save(path, _raw);
             Path = path;
         }

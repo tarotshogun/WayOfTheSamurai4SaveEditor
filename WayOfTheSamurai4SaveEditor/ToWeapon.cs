@@ -30,6 +30,7 @@ namespace WayOfTheSamurai4SaveEditor
             var quality = BitConverter.ToUInt16(raw.Quality);
             var maxQuality = BitConverter.ToUInt16(raw.MaxQuality);
             var killCount = BitConverter.ToUInt16(raw.KillCount);
+            var tsumagiriCount = BitConverter.ToUInt16(raw.TsumagiriCount);
             var totalRecoveredDurability = BitConverter.ToUInt32(raw.TotalRecoveredDurability);
             var yaiba = ToUInt32Enum<Yaiba>(To4Bytes(raw.Yaiba));
             var tsuba = ToUInt32Enum<Tsuba>(To4Bytes(raw.Tsuba));
@@ -53,6 +54,7 @@ namespace WayOfTheSamurai4SaveEditor
                 Quality = quality,
                 MaxQuality = maxQuality,
                 KillCount = killCount,
+                TsumagiriCount = tsumagiriCount,
                 Mei = mei,
                 TotalRecoveredDurability = totalRecoveredDurability,
                 Attractions = attractions,

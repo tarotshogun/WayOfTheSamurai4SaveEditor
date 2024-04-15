@@ -62,9 +62,13 @@ namespace WayOfTheSamurai4SaveEditor
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 200)] // 武器箪笥四まで解放したときの値
         public RawCabinetWeapon[] CabinetWeapons;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)] // 武器1つで10行進むので200*16bytes*10lines
-        public byte[] Padding129AE_B9AF;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 221632)]
-        public byte[] PaddingB9B0_;
+        public byte[] Padding129EE_129EF;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 26656)]
+        public byte[] Padding129F0_1920F;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)] 
+        public RawMyRyuhaName[] MyRyuhaName;    // インデックスが間違っていて取得できない
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 189856)]
+        public byte[] Padding1A610_;
     }
 
     // メンバ変数の名前は武器箪笥最初の武器のアドレスを参照
@@ -116,7 +120,7 @@ namespace WayOfTheSamurai4SaveEditor
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public byte[] KillCount;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] PaddingAD8C_AD8D;
+        public byte[] TsumagiriCount;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -127,4 +131,16 @@ namespace WayOfTheSamurai4SaveEditor
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public byte[] Num;
     }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct RawMyRyuhaName
+    {
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
+        public byte[] Header; // 何の値かわかっていないインクリメントしている
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
+        public byte[] Name;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
+        public byte[] Footer; // 何の値かわかっていないインクリメントしている
+    }
+
 }

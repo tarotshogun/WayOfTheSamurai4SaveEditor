@@ -39,6 +39,7 @@ namespace WayOfTheSamurai4SaveEditor
             Array.Copy(BitConverter.GetBytes(weapon.Quality), raw.Quality, raw.Quality.Length);
             Array.Copy(BitConverter.GetBytes(weapon.MaxQuality), raw.MaxQuality, raw.MaxQuality.Length);
             Array.Copy(BitConverter.GetBytes(weapon.KillCount), raw.KillCount, raw.KillCount.Length);
+            Array.Copy(BitConverter.GetBytes(weapon.TsumagiriCount), raw.TsumagiriCount, raw.TsumagiriCount.Length);
             Array.Copy(BitConverter.GetBytes(weapon.TotalRecoveredDurability), raw.TotalRecoveredDurability, raw.TotalRecoveredDurability.Length);
             // Delete magic number and define constant value
             Array.Copy(BitConverter.GetBytes((uint)weapon.Yaiba), raw.Yaiba, 3);

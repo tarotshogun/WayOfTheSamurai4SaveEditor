@@ -92,19 +92,9 @@ namespace WayOfTheSamurai4SaveEditor
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public byte[] MaxQuality;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        public byte[] PaddingAD0C_AD11; // 魅力のヘッダ？
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] Attraction1;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] NumAttraction1;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] Attraction2;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] NumAttraction2;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] Attraction3;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] NumAttraction3;
+        public byte[] PaddingAD0C_AD11; // 魅力のヘッダ？違いそう
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
+        public RawAttraction[] attractions;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]  // 実際は17文字までしか入力できないようです
         public byte[] Name;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 22)]
@@ -127,5 +117,14 @@ namespace WayOfTheSamurai4SaveEditor
         public byte[] KillCount;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public byte[] PaddingAD8C_AD8D;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct RawAttraction
+    {
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
+        public byte[] Attraction;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
+        public byte[] Num;
     }
 }

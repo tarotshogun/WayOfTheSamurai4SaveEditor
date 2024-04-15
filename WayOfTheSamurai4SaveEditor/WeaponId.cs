@@ -17,6 +17,6 @@ namespace WayOfTheSamurai4SaveEditor
 
     public enum UniqueWeaponList
     {
-        無 = 0xFFFF,
+        なし = 0xFFFF,
     }
 }

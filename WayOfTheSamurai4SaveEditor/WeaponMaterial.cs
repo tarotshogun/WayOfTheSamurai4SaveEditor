@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace WayOfTheSamurai4SaveEditor
 {
     // 表示用の変換処理を作るのがめんどくさいので変数名を全部日本語にする
-    public enum YaibaMaterial : uint
+    public enum Yaiba : uint
     {
         なまくら刀 = 0x18013B,
         クルセイダー = 0x390138,
@@ -78,10 +78,10 @@ namespace WayOfTheSamurai4SaveEditor
         カツオ = 0xFF000A,
         M2リボルバー = 0xFF000B,
 
-        無 = 0xFFFFFF,
+        なし = 0xFFFFFF,
     }
 
-    public enum TsubaMaterial : uint
+    public enum Tsuba : uint
     {
         なまくら刀 = 0x013D00,
         クルセイダー = 0x00A101,
@@ -124,10 +124,10 @@ namespace WayOfTheSamurai4SaveEditor
         霜柱 = 0x015100,
         風花 = 0x003100,
 
-        無 = 0xFFFFFF,
+        なし = 0xFFFFFF,
     }
 
-    public enum TsukaMaterial : ushort
+    public enum Tsuka : ushort
     {
         なまくら刀 = 0x013C,
         クルセイダー = 0x00A0,
@@ -187,6 +187,6 @@ namespace WayOfTheSamurai4SaveEditor
         風花 = 0x0032,
         麒麟児 = 0x0105,
 
-        無 = 0xFFFF,
+        なし = 0xFFFF,
     }
 }

@@ -66,19 +66,22 @@ namespace WayOfTheSamurai4SaveEditor
             var maxQuality = BitConverter.ToUInt16(raw.MaxQuality);
             var killCount = BitConverter.ToUInt16(raw.KillCount);
             var totalRecoveredDurability = BitConverter.ToUInt32(raw.TotalRecoveredDurability);
-            var yaiba = ToEnum<YaibaMaterial>(raw.Yaiba);
-            var tsuba = ToEnum<TsubaMaterial>(raw.Tsuba);
-            var tsuka = ToTsukaMaterial(raw.Tsuka);
-            var mei = ToEnum<Mei>(raw.Mei);
+            var yaiba = ToUInt32Enum<Yaiba>(To4Bytes(raw.Yaiba));
+            var tsuba = ToUInt32Enum<Tsuba>(To4Bytes(raw.Tsuba));
+            var tsuka = ToTsuka(raw.Tsuka);
+            var mei = ToUInt32Enum<Mei>(To4Bytes(raw.Mei));
+            var attractions = ToAttractions(raw.attractions);
 
             Debug.Write(string.Format("[0x{0:X2}:{1:X}] ", weaponId, name));
             Debug.Write(string.Format("unique: 0x{0:X2} ", uniqueId));
             Debug.Write(string.Format("materials: 0x{0:X8} 0x{1:X8} 0x{2:X4} ",
-                ToUInt32(raw.Yaiba), ToUInt32(raw.Tsuba), BitConverter.ToUInt16(raw.Tsuka)));
-            Debug.Write(string.Format("mei: 0x{0:X8} ", ToUInt32(raw.Mei)));
+                BitConverter.ToUInt32(To4Bytes(raw.Yaiba)),
+                BitConverter.ToUInt32(To4Bytes(raw.Tsuba)), 
+                BitConverter.ToUInt16(raw.Tsuka)));
+            Debug.Write(string.Format("mei: 0x{0:X8} ", BitConverter.ToUInt32(To4Bytes(raw.Mei))));
             Debug.WriteLine("");
 
-            return new Weapon(name,durability, maxDurability, yaiba, tsuba, tsuka)
+            return new Weapon(name, durability, maxDurability, yaiba, tsuba, tsuka)
             {
                 Attack = attack,
                 IsOriginal = (weaponId == 0xFFFF),
@@ -87,45 +90,93 @@ namespace WayOfTheSamurai4SaveEditor
                 KillCount = killCount,
                 Mei = mei,
                 TotalRecoveredDurability = totalRecoveredDurability,
+                Attractions = attractions,
             };
         }
 
-        static uint ToUInt32(byte[] raw)
+        static Tsuka ToTsuka(byte[] raw)
         {
-            // ToUInt32は少なくとも4byteのバイト列を必要とするため、リサイズする
-            Debug.Assert(raw.Length < 4);
-            byte[] extendedRaw = new byte[4];
-            Array.Copy(raw, extendedRaw, raw.Length);
-
-            return BitConverter.ToUInt32(extendedRaw);
+            var tsuka = BitConverter.ToUInt16(raw);
+            if (Enum.IsDefined(typeof(Tsuka), tsuka))
+            {
+                return (Tsuka)tsuka;
+            }
+            else
+            {
+                return Tsuka.なし;
+            }
         }
 
-        static T ToEnum<T>(byte[] raw) where T : Enum
+        static Attraction[] ToAttractions(RawAttraction[] raw)
         {
-            var value = ToUInt32(raw);
+            const int MaxAttractionCount = 3;  // 一つの刀あたりの最大の魅力の数
+            var attractions = new List<Attraction>(MaxAttractionCount);
+
+            foreach (var rawAttraction in raw)
+            {
+                var attraction = ToAttraction(rawAttraction);
+                for(int i = 0; i < attraction.num; ++i)
+                {
+                    Debug.Assert(attraction.attraction != Attraction.なし);
+                    if(attraction.attraction != Attraction.なし && attractions.Count < MaxAttractionCount)
+                    {
+                        attractions.Add(attraction.attraction);
+                    }
+                }
+            }
+
+            // 配列の未設定部分に魅力「なし」を追加する
+            while (attractions.Count < MaxAttractionCount)
+            {
+                attractions.Add(Attraction.なし);
+            }
+
+            return attractions.ToArray();
+        }
+
+        static (Attraction attraction, uint num) ToAttraction(RawAttraction raw)
+        {
+            var attraction = ToUInt16Enum<Attraction>(raw.Attraction);
+            var num = BitConverter.ToUInt16(raw.Num);
+            return (attraction, num);
+        }
+
+        static byte[] To4Bytes(byte[] raw)
+        {
+            const uint ByteSize = 4;
+            Debug.Assert(raw.Length < ByteSize);
+            var extended = new byte[ByteSize];
+            Array.Copy(raw, extended, raw.Length);
+            return extended;
+        }
+
+        static T ToUInt32Enum<T>(byte[] raw) where T : Enum
+        {
+            var value = BitConverter.ToUInt32(raw);
             if (Enum.IsDefined(typeof(T), value))
             {
                 return (T)(object)value;
             }
             else
             {
-                const string defaultValue = "無";
+                const string defaultValue = "なし";
                 Debug.Assert(Enum.GetNames(typeof(T)).Contains(defaultValue));
-                return (T)Enum.Parse(typeof(T), "無");
+                return (T)Enum.Parse(typeof(T), "なし");
             }
         }
 
-
-        static TsukaMaterial ToTsukaMaterial(byte[] raw)
+        static T ToUInt16Enum<T>(byte[] raw) where T : Enum
         {
-            var tsuka = BitConverter.ToUInt16(raw);
-            if (Enum.IsDefined(typeof(TsukaMaterial), tsuka))
+            var value = BitConverter.ToUInt16(raw);
+            if (Enum.IsDefined(typeof(Attraction), value))
             {
-                return (TsukaMaterial)tsuka;
+                return (T)(object)value;
             }
             else
             {
-                return TsukaMaterial.無;
+                const string defaultValue = "なし";
+                Debug.Assert(Enum.GetNames(typeof(T)).Contains(defaultValue));
+                return (T)Enum.Parse(typeof(T), "なし");
             }
         }
     }

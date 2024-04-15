@@ -32,6 +32,22 @@ namespace WayOfTheSamurai4SaveEditor
         鬼神 = 0x12017C,
         散華 = 0x13017D,
 
-        無 = 0xFFFFFF,
+        なし = 0xFFFFFF,
+    }
+
+    public enum Attraction : ushort
+    {
+        天運 = 0x0000,
+        暗刃 = 0x0001,
+        明刃 = 0x0002,
+        銭呼 = 0x0003,
+        活復 = 0x0004,
+        疾風 = 0x0005,
+        背水 = 0x0006,
+        投抜 = 0x0007,
+        頑健 = 0x0008,
+        重撃 = 0x0009,
+
+        なし = 0xFFFF,
     }
 }

@@ -18,6 +18,9 @@ namespace WayOfTheSamurai4SaveEditor
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
+        private const string DefaultTitle = "侍道4セーブエディタ";
+
+        // TODO: Replace to `ReactiveProperty`
         public SaveDataFile? SaveData
         {
             get { return _saveData; }
@@ -28,12 +31,23 @@ namespace WayOfTheSamurai4SaveEditor
             }
         }
 
+        public string Title
+        {
+            get { return _title; }
+            set
+            {
+                _title = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public ICommand OpenFileCommand { get; }
         public ICommand SaveFileCommand { get; }
         public ICommand SaveAsFileCommand { get; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
-        SaveDataFile? _saveData;
+        SaveDataFile? _saveData = null;
+        string _title = DefaultTitle;
 
         public MainWindowViewModel()
         {
@@ -43,6 +57,7 @@ namespace WayOfTheSamurai4SaveEditor
             SaveAsFileCommand = new DelegateCommand(SaveAsFile, CanSaveFile)
                 .ObservesProperty(() => SaveData);
         }
+
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -80,6 +95,12 @@ namespace WayOfTheSamurai4SaveEditor
                 var button = MessageBoxButton.OK;
                 var icon = MessageBoxImage.Warning;
                 MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
+            }
+
+            if (SaveData is not null)
+            {
+                var fileName = System.IO.Path.GetFileName(SaveData.Path);
+                Title = DefaultTitle + " - " + fileName;
             }
         }
 

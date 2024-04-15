@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WayOfTheSamurai4SaveEditor
 {
-    public static class MainCharacterConverter
+    static class MainCharacterConverter
     {
         public static ObservableCollection<MainCharacter> ToMainCharacters(RawSaveData raw)
         {

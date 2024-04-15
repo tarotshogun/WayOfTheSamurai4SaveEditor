@@ -9,7 +9,7 @@ using System.Windows.Shapes;
 
 namespace WayOfTheSamurai4SaveEditor
 {
-    public class SaveDataFile
+    class SaveDataFile
     {
         public ObservableCollection<MainCharacter> MainCharacters { get; set; } = [];
         public ObservableCollection<Weapon> CarriedWeapons { get; set; } = [];

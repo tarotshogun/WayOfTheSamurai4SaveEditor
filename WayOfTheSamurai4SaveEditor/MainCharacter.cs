@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WayOfTheSamurai4SaveEditor
 {
-    public class MainCharacter
+    class MainCharacter
     {
         public string Name
         {

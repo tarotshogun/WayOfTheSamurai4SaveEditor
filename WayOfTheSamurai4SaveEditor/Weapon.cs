@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WayOfTheSamurai4SaveEditor
 {
-    public class Weapon(
+    class Weapon(
         string name = "",
         ushort durability = 0,
         ushort MaxDurability = 0,

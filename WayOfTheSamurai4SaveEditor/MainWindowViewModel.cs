@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 
 namespace WayOfTheSamurai4SaveEditor
 {
-    public class MainWindowViewModel : INotifyPropertyChanged
+    class MainWindowViewModel : INotifyPropertyChanged
     {
         private const string DefaultTitle = "侍道4セーブエディタ";
 

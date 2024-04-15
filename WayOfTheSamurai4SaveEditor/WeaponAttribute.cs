@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WayOfTheSamurai4SaveEditor
 {
-    public enum Mei : uint
+    enum Mei : uint
     {
         人斬り = 0x016A00,
         狂事 = 0x01016B,

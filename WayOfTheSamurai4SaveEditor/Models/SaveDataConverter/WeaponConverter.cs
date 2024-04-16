@@ -6,8 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using WayOfTheSamurai4SaveEditor.Models.RawData;
+using WayOfTheSamurai4SaveEditor.Models.SaveData;
 
-namespace WayOfTheSamurai4SaveEditor
+namespace WayOfTheSamurai4SaveEditor.Models.SaveDataConverter
 {
     static partial class WeaponConverter
     {

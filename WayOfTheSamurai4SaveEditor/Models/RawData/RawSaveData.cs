@@ -18,12 +18,38 @@ B3C uint8 侍点
 002AXXXX 0029が卸し金でXXXXが個数
 002BXXXX 0029が堂島鋼でXXXXが個数
 002CXXXX 0029が緋緋色金でXXXXが個数
+
+18D10のあたりは流派
+アドレス 修練度 段 斬殺数
+18BC0 無頼流剣術
+18BD0
+18BE0
+18BF0
+18C00
+18C10 無心流剣術
+18D10 東急流剣術
+18D20 
+18D30 ウィンザー流
+18D40 
+18D50 
+18E80 裏波羅流剣術
+19030 適闘流体術
+19040 夕張流体術
+19050
+19060
+19070 アルスター式銃術
+19080
+19090
+190A0
+190B0
+190C0
+190D0 阿佐翔流術体術
 */
 
-namespace WayOfTheSamurai4SaveEditor
+namespace WayOfTheSamurai4SaveEditor.Models.RawData
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct RawSaveData
+    struct RawSaveData
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
         public byte[] Padding0000_0007;
@@ -45,7 +71,7 @@ namespace WayOfTheSamurai4SaveEditor
         public byte[] Padding0B30_0B3B;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
         public byte[] SamuraiPoint;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10848)] 
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10848)]
         public byte[] Padding0B40_359F;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
         public byte[] Padding35A0_35A4;
@@ -55,8 +81,12 @@ namespace WayOfTheSamurai4SaveEditor
         public byte[] Hp;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
         public byte[] Padding35AC_35AF;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 30512)]
-        public byte[] Padding35B0_ACDF;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9696)]
+        public byte[] Padding35B0_5B90;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
+        public RawRareItem[] RareItems;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 20736)]
+        public byte[] Padding5BE0_ACDF;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 14)]
         public byte[] PaddingACE0_ACED;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 200)] // 武器箪笥四まで解放したときの値
@@ -65,7 +95,7 @@ namespace WayOfTheSamurai4SaveEditor
         public byte[] Padding129EE_129EF;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 26656)]
         public byte[] Padding129F0_1920F;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)] 
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
         public RawMyRyuhaName[] MyRyuhaName;    // インデックスが間違っていて取得できない
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 189856)]
         public byte[] Padding1A610_;
@@ -73,7 +103,7 @@ namespace WayOfTheSamurai4SaveEditor
 
     // メンバ変数の名前は武器箪笥最初の武器のアドレスを参照
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct RawCabinetWeapon
+    struct RawCabinetWeapon
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
         public byte[] PaddingACEE_ACF3;
@@ -124,7 +154,7 @@ namespace WayOfTheSamurai4SaveEditor
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct RawAttraction
+    struct RawAttraction
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public byte[] Attraction;
@@ -133,7 +163,7 @@ namespace WayOfTheSamurai4SaveEditor
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct RawMyRyuhaName
+    struct RawMyRyuhaName
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
         public byte[] Header; // 何の値かわかっていないインクリメントしている
@@ -143,4 +173,14 @@ namespace WayOfTheSamurai4SaveEditor
         public byte[] Footer; // 何の値かわかっていないインクリメントしている
     }
 
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    struct RawRareItem
+    {
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
+        public byte[] Name;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
+        public byte[] Count;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+        public byte[] Unknown;
+    }
 }

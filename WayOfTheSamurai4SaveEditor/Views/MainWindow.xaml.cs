@@ -13,7 +13,7 @@ using System.Windows.Shapes;
 using System.IO;
 
 
-namespace WayOfTheSamurai4SaveEditor
+namespace WayOfTheSamurai4SaveEditor.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

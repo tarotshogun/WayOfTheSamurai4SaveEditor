@@ -4,19 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WayOfTheSamurai4SaveEditor
+namespace WayOfTheSamurai4SaveEditor.Models.SaveData
 {
     class MainCharacter
     {
         public string Name
         {
             get { return _name; }
-            set {
+            set
+            {
                 const int MaxNameLength = 31;
                 if (value.Length > MaxNameLength)
                 {
                     _name = value[..MaxNameLength];
-                } 
+                }
                 else
                 {
                     _name = value;
@@ -66,6 +67,6 @@ namespace WayOfTheSamurai4SaveEditor
 
         string _name = "";
         uint _money = 0;
-        uint _cashbox= 0;
+        uint _cashbox = 0;
     }
 }

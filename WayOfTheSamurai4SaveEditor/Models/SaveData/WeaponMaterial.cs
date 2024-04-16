@@ -131,7 +131,7 @@ namespace WayOfTheSamurai4SaveEditor
     {
         なまくら刀 = 0x013C,
         クルセイダー = 0x00A0,
-        ジョセフィーヌ= 0x007C,
+        ジョセフィーヌ = 0x007C,
         センチュリオン = 0x0082,
         一文字 = 0x007E,
         一発丸 = 0x0016,
@@ -168,7 +168,7 @@ namespace WayOfTheSamurai4SaveEditor
         羅刹 = 0x0096,
         蝉丸 = 0x00F9,
         虎徹 = 0x015B,
-        蛇蜻蛉 = 0x00FE, 
+        蛇蜻蛉 = 0x00FE,
         闇緊 = 0x0084,
         貪鬼丸 = 0x00F5,
         金盞花 = 0x0101,

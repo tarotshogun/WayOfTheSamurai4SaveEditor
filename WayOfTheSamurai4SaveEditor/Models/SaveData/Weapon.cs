@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WayOfTheSamurai4SaveEditor
+namespace WayOfTheSamurai4SaveEditor.Models.SaveData
 {
     class Weapon(
         string name = "",
@@ -127,7 +127,7 @@ namespace WayOfTheSamurai4SaveEditor
         public Mei Mei { get; set; }
         public uint KillCount { get; set; }
         public uint TsumagiriCount { get; set; }
-        public uint TotalRecoveredDurability {  get; set; }
+        public uint TotalRecoveredDurability { get; set; }
 
         public Attraction[] Attractions
         {

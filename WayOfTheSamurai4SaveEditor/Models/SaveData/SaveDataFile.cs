@@ -6,18 +6,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Shapes;
+using WayOfTheSamurai4SaveEditor.Models.SaveDataConverter;
+using WayOfTheSamurai4SaveEditor.Models.Accessor;
+using WayOfTheSamurai4SaveEditor.Models.RawData;
 
-namespace WayOfTheSamurai4SaveEditor
+namespace WayOfTheSamurai4SaveEditor.Models.SaveData
 {
     class SaveDataFile
     {
         public ObservableCollection<MainCharacter> MainCharacters { get; set; } = [];
+        public ObservableCollection<RareItem> RareItems { get; set; } = [];
         public ObservableCollection<Weapon> CarriedWeapons { get; set; } = [];
         public ObservableCollection<Weapon> BaggedWeapons { get; set; } = [];
         public ObservableCollection<Weapon> CabinetWeapons { get; set; } = [];
         public ObservableCollection<Ryuha> Ryuha { get; set; } = [];
         public string Path { get; private set; } = "";
-        
+
         private RawSaveData _raw = new();
 
         public SaveDataFile(string path)

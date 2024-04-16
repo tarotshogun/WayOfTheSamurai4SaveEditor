@@ -9,8 +9,9 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using WayOfTheSamurai4SaveEditor.Models.RawData;
 
-namespace WayOfTheSamurai4SaveEditor
+namespace WayOfTheSamurai4SaveEditor.Models.Accessor
 {
     class SaveDataAccessor
     {

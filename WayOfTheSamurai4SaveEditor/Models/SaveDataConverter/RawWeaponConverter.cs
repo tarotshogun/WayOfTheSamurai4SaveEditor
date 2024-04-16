@@ -7,8 +7,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WayOfTheSamurai4SaveEditor.Models.RawData;
+using WayOfTheSamurai4SaveEditor.Models.SaveData;
 
-namespace WayOfTheSamurai4SaveEditor
+namespace WayOfTheSamurai4SaveEditor.Models.SaveDataConverter
 {
     partial class WeaponConverter
     {

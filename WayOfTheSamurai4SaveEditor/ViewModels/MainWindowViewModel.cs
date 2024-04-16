@@ -12,9 +12,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Shapes;
+using WayOfTheSamurai4SaveEditor.Models.SaveData;
 
 
-namespace WayOfTheSamurai4SaveEditor
+namespace WayOfTheSamurai4SaveEditor.ViewModels
 {
     class MainWindowViewModel : INotifyPropertyChanged
     {

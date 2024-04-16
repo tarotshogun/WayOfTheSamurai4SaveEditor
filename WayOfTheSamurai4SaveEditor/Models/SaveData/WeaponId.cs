@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WayOfTheSamurai4SaveEditor
+namespace WayOfTheSamurai4SaveEditor.Models.SaveData
 {
     // 表示用の変換処理を作るのがめんどくさいので変数名を全部日本語にする
     enum WeaponIdList

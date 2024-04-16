@@ -1,9 +1,9 @@
-﻿<Window x:Class="WayOfTheSamurai4SaveEditor.MainWindow"
+﻿<Window x:Class="WayOfTheSamurai4SaveEditor.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WayOfTheSamurai4SaveEditor"
+        xmlns:local="clr-namespace:WayOfTheSamurai4SaveEditor.ViewModels"
         mc:Ignorable="d"
         Title="{Binding Title}" Height="450" Width="800">
     <Window.DataContext>
@@ -126,6 +126,17 @@
                                 <DataGridTextColumn Header="命" Binding="{Binding Hp, StringFormat=N0}"/>
                                 <DataGridTextColumn Header="活力" Binding="{Binding Katsuryoku, StringFormat=N0}"/>
                                 <DataGridTextColumn Header="侍点" Binding="{Binding SamuraiPoint, StringFormat=N0}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Header="貴重品">
+                    <DockPanel LastChildFill="True">
+                        <DataGrid Style="{StaticResource CommonDataGridStyle}" ItemsSource="{Binding SaveData.RareItems}"
+                                  d:ItemsSource="{d:SampleData ItemCount=10}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="アイテム" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="個数" Binding="{Binding Count, StringFormat=N0}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </DockPanel>

@@ -12,8 +12,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Shapes;
+using WayOfTheSamurai4SaveEditor.Models;
 using WayOfTheSamurai4SaveEditor.Models.SaveData;
-
 
 namespace WayOfTheSamurai4SaveEditor.ViewModels
 {

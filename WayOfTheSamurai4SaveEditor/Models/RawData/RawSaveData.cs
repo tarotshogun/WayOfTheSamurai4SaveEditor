@@ -177,7 +177,7 @@ namespace WayOfTheSamurai4SaveEditor.Models.RawData
     struct RawRareItem
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] Name;
+        public byte[] Id;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public byte[] Count;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]

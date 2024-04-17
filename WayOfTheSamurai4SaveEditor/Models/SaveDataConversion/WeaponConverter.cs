@@ -9,7 +9,7 @@ using System.Windows.Controls;
 using WayOfTheSamurai4SaveEditor.Models.RawData;
 using WayOfTheSamurai4SaveEditor.Models.SaveData;
 
-namespace WayOfTheSamurai4SaveEditor.Models.SaveDataConverter
+namespace WayOfTheSamurai4SaveEditor.Models.SaveDataConversion
 {
     static partial class WeaponConverter
     {

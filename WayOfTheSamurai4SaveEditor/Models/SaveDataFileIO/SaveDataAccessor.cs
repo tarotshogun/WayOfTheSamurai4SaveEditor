@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using WayOfTheSamurai4SaveEditor.Models.RawData;
 
-namespace WayOfTheSamurai4SaveEditor.Models.Accessor
+namespace WayOfTheSamurai4SaveEditor.Models.SaveDataFileIO
 {
     class SaveDataAccessor
     {

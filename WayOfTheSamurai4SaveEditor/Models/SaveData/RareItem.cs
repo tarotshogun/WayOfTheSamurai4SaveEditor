@@ -17,7 +17,40 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveData
 
     class RareItem
     {
-        RareItemId id = RareItemId.なし;
-        uint count = 0;
+        public IEnumerable<RareItemId> RareItemIdList { get; private set; } = Enum.GetValues<RareItemId>();
+
+        public RareItemId Id
+        {
+            get { return _id; }
+            set
+            {
+                _id = value;
+                if (value == RareItemId.なし)
+                {
+                    // UIにも反映されるようにしたい
+                    Count = 0;
+                }
+            }
+        }
+
+        public ushort Count
+        {
+            get { return _count; }
+            set
+            {
+                const ushort MaxRareItemCount = 99;
+                if (Id != RareItemId.なし)
+                {
+                    _count = value > MaxRareItemCount ? MaxRareItemCount : value;
+                }
+                else
+                {
+                    _count = 0;
+                }
+            }
+        }
+
+        private RareItemId _id = RareItemId.なし;
+        private ushort _count = 0;
     }
 }

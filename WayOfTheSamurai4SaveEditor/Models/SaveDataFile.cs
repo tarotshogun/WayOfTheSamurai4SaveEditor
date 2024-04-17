@@ -6,11 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Shapes;
-using WayOfTheSamurai4SaveEditor.Models.SaveDataConverter;
-using WayOfTheSamurai4SaveEditor.Models.Accessor;
+using WayOfTheSamurai4SaveEditor.Models.SaveDataConversion;
+using WayOfTheSamurai4SaveEditor.Models.SaveDataFileIO;
 using WayOfTheSamurai4SaveEditor.Models.RawData;
+using WayOfTheSamurai4SaveEditor.Models.SaveData;
 
-namespace WayOfTheSamurai4SaveEditor.Models.SaveData
+namespace WayOfTheSamurai4SaveEditor.Models
 {
     class SaveDataFile
     {
@@ -35,6 +36,7 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveData
             MainCharacters = MainCharacterConverter.ToMainCharacters(_raw);
             CabinetWeapons = WeaponConverter.ToWeapons(_raw.CabinetWeapons);
             Ryuha = RyuhaConverter.ToRyuha(_raw.MyRyuhaName);
+            RareItems = SaveDataConverter.ToRareItems(_raw.RareItems);
             Path = path;
         }
 
@@ -48,6 +50,7 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveData
             MainCharacterConverter.ToRawMainCharacter(MainCharacters[0], ref _raw);
             WeaponConverter.ToRawCabinetWeapons(CabinetWeapons, ref _raw.CabinetWeapons);
             RyuhaConverter.ToRawMyRyuhaName(Ryuha, ref _raw.MyRyuhaName);
+            SaveDataConverter.ToRawRareItems(RareItems, ref _raw.RareItems);
             SaveDataAccessor.Save(path, _raw);
             Path = path;
         }

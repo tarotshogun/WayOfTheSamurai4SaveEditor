@@ -18,10 +18,6 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveData
                 {
                     _name = value[..MaxNameLength];
                 }
-                else
-                {
-                    _name = value;
-                }
             }
         }
 

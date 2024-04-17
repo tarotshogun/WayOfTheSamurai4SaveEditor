@@ -25,6 +25,7 @@
             <Setter Property="VerticalGridLinesBrush" Value="LightGray" />
             <Setter Property="CanUserSortColumns" Value="False"/>
         </Style>
+        <CollectionViewSource x:Key="RareItemIdList" Source="{Binding RareItemIdList}" />
         <DataGrid x:Key="WeaponsDataGrid" x:Name="bukiDansuDataGrid" Style="{StaticResource CommonDataGridStyle}" 
                             ItemsSource="{Binding .}" d:ItemsSource="{d:SampleData ItemCount=100}">
             <DataGrid.Columns>
@@ -132,10 +133,17 @@
                 </TabItem>
                 <TabItem Header="貴重品">
                     <DockPanel LastChildFill="True">
-                        <DataGrid Style="{StaticResource CommonDataGridStyle}" ItemsSource="{Binding SaveData.RareItems}"
+                        <DataGrid Style="{StaticResource CommonDataGridStyle}" ItemsSource="{Binding SaveData.RareItems}" 
                                   d:ItemsSource="{d:SampleData ItemCount=10}">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="アイテム" Binding="{Binding Name}"/>
+                                <DataGridTemplateColumn Header="アイテム">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ComboBox ItemsSource="{Binding RareItemIdList}"
+                                                SelectedValue="{Binding Id, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                                 <DataGridTextColumn Header="個数" Binding="{Binding Count, StringFormat=N0}"/>
                             </DataGrid.Columns>
                         </DataGrid>

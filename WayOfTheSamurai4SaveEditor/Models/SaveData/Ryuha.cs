@@ -14,9 +14,9 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveData
             set
             {
                 const int MaxNameLength = 9;
-                if (value.Length <= MaxNameLength)
+                if (value.Length > MaxNameLength)
                 {
-                    _name = value;
+                    _name = value[..MaxNameLength];
                 }
             }
         }

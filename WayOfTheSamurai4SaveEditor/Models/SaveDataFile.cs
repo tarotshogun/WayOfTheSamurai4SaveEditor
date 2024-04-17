@@ -34,8 +34,9 @@ namespace WayOfTheSamurai4SaveEditor.Models
         {
             _raw = SaveDataAccessor.Load(path);
             MainCharacters = MainCharacterConverter.ToMainCharacters(_raw);
-            CabinetWeapons = WeaponConverter.ToWeapons(_raw.CabinetWeapons);
+            CarriedWeapons = WeaponConverter.ToWeapons(_raw.CarriedWeapons);
             BaggedWeapons = WeaponConverter.ToWeapons(_raw.BaggedWeapons);
+            CabinetWeapons = WeaponConverter.ToWeapons(_raw.CabinetWeapons);
             Ryuha = RyuhaConverter.ToRyuha(_raw.MyRyuhaName);
             RareItems = SaveDataConverter.ToRareItems(_raw.RareItems);
             Path = path;
@@ -49,8 +50,9 @@ namespace WayOfTheSamurai4SaveEditor.Models
         public void Write(string path)
         {
             MainCharacterConverter.ToRawMainCharacter(MainCharacters[0], ref _raw);
-            WeaponConverter.ToRawCabinetWeapons(CabinetWeapons, ref _raw.CabinetWeapons);
+            WeaponConverter.ToRawCabinetWeapons(CarriedWeapons, ref _raw.CarriedWeapons);
             WeaponConverter.ToRawCabinetWeapons(BaggedWeapons, ref _raw.BaggedWeapons);
+            WeaponConverter.ToRawCabinetWeapons(CabinetWeapons, ref _raw.CabinetWeapons);
             RyuhaConverter.ToRawMyRyuhaName(Ryuha, ref _raw.MyRyuhaName);
             SaveDataConverter.ToRawRareItems(RareItems, ref _raw.RareItems);
             SaveDataAccessor.Save(path, _raw);

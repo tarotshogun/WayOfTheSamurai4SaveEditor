@@ -8,10 +8,6 @@ using System.Threading.Tasks;
 /*
 解析メモ
 
-B3C uint8 侍点
-
-A6B0 帯刀武器
-
 35A8 float 体力 9999が最大（461C3C00）
 35A4 float 活力 9999が最大（461C3C00）
 
@@ -87,10 +83,14 @@ namespace WayOfTheSamurai4SaveEditor.Models.RawData
         public byte[] Padding35B0_5B90;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
         public RawRareItem[] RareItems;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 19136)]
-        public byte[] Padding5BE0_A69F;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
-        public byte[] PaddingA6A0_A6AA;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 18656)]
+        public byte[] Padding5BE0_A4BF;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
+        public byte[] PaddingA4C0_A4C1;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)] // 3 * 16 * 10
+        public RawCabinetWeapon[] CarriedWeapons;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
+        public byte[] PaddingA6A2_A6A9;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
         public RawCabinetWeapon[] BaggedWeapons;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]

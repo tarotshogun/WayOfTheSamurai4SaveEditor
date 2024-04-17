@@ -50,9 +50,9 @@ namespace WayOfTheSamurai4SaveEditor.Models
         public void Write(string path)
         {
             MainCharacterConverter.ToRawMainCharacter(MainCharacters[0], ref _raw);
-            WeaponConverter.ToRawCabinetWeapons(CarriedWeapons, ref _raw.CarriedWeapons);
-            WeaponConverter.ToRawCabinetWeapons(BaggedWeapons, ref _raw.BaggedWeapons);
-            WeaponConverter.ToRawCabinetWeapons(CabinetWeapons, ref _raw.CabinetWeapons);
+            WeaponConverter.ToRawWeapons(CarriedWeapons, ref _raw.CarriedWeapons);
+            WeaponConverter.ToRawWeapons(BaggedWeapons, ref _raw.BaggedWeapons);
+            WeaponConverter.ToRawWeapons(CabinetWeapons, ref _raw.CabinetWeapons);
             RyuhaConverter.ToRawMyRyuhaName(Ryuha, ref _raw.MyRyuhaName);
             SaveDataConverter.ToRawRareItems(RareItems, ref _raw.RareItems);
             SaveDataAccessor.Save(path, _raw);

@@ -88,15 +88,15 @@ namespace WayOfTheSamurai4SaveEditor.Models.RawData
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public byte[] PaddingA4C0_A4C1;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)] // 3 * 16 * 10
-        public RawCabinetWeapon[] CarriedWeapons;
+        public RawWeapon[] CarriedWeapons;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
         public byte[] PaddingA6A2_A6A9;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
-        public RawCabinetWeapon[] BaggedWeapons;
+        public RawWeapon[] BaggedWeapons;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
         public byte[] PaddingACEA_ACED;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 200)] // 武器箪笥四まで解放したときの値
-        public RawCabinetWeapon[] CabinetWeapons;
+        public RawWeapon[] CabinetWeapons;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)] // 武器1つで10行進むので200*16bytes*10lines
         public byte[] Padding129EE_129EF;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 26656)]
@@ -109,7 +109,7 @@ namespace WayOfTheSamurai4SaveEditor.Models.RawData
 
     // メンバ変数の名前は武器箪笥最初の武器のアドレスを参照
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    struct RawCabinetWeapon
+    struct RawWeapon
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
         public byte[] PaddingACEE_ACF3;

@@ -14,7 +14,7 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveDataConversion
 {
     partial class WeaponConverter
     {
-        public static ObservableCollection<Weapon> ToWeapons(RawCabinetWeapon[] raw)
+        public static ObservableCollection<Weapon> ToWeapons(RawWeapon[] raw)
         {
             var weapons = new ObservableCollection<Weapon>();
             foreach (var weapon in raw)
@@ -24,7 +24,7 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveDataConversion
             return weapons;
         }
 
-        public static void ToRawCabinetWeapons(ObservableCollection<Weapon> weapons, ref RawCabinetWeapon[] raw)
+        public static void ToRawWeapons(ObservableCollection<Weapon> weapons, ref RawWeapon[] raw)
         {
             for (int i = 0; i < weapons.Count; i++)
             {
@@ -32,7 +32,7 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveDataConversion
             }
         }
 
-        static void ToRawCabinetWeapon(Weapon weapon, ref RawCabinetWeapon raw)
+        static void ToRawCabinetWeapon(Weapon weapon, ref RawWeapon raw)
         {
             Array.Copy(Encoding.Unicode.GetBytes(weapon.Name), raw.Name, weapon.Name.Length);
             Array.Copy(BitConverter.GetBytes(weapon.Attack), raw.Attack, raw.Attack.Length);

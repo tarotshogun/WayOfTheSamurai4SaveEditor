@@ -13,7 +13,7 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveDataConversion
 {
     static partial class WeaponConverter
     {
-        static Weapon ToWeapon(ref readonly RawCabinetWeapon raw)
+        static Weapon ToWeapon(ref readonly RawWeapon raw)
         {
             string name = Encoding.Unicode.GetString(raw.Name);
             if (name.Equals(""))

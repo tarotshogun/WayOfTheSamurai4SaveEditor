@@ -112,7 +112,7 @@
                     <MenuItem Header="名前を付けて保存" Command="{Binding SaveAsFileCommand}" InputGestureText="Ctrl+Shift+S" />
                 </MenuItem>
                 <MenuItem Header="ヘルプ">
-                    <MenuItem Header="侍道4セーブエディタについて"/>
+                    <MenuItem Header="侍道4セーブエディタについて" Command="{Binding AboutWayOfTheSamurai4Editor}"/>
                 </MenuItem>
             </Menu>
             <TabControl x:Name="tabControl">

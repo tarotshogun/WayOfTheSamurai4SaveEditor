@@ -45,6 +45,7 @@ namespace WayOfTheSamurai4SaveEditor.ViewModels
         public ICommand OpenFileCommand { get; }
         public ICommand SaveFileCommand { get; }
         public ICommand SaveAsFileCommand { get; }
+        public ICommand AboutWayOfTheSamurai4Editor { get; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         SaveDataFile? _saveData = null;
@@ -57,6 +58,7 @@ namespace WayOfTheSamurai4SaveEditor.ViewModels
                 .ObservesProperty(() => SaveData);
             SaveAsFileCommand = new DelegateCommand(SaveAsFile, CanSaveFile)
                 .ObservesProperty(() => SaveData);
+            AboutWayOfTheSamurai4Editor = new DelegateCommand(ShowEditorInfo);
         }
 
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
@@ -137,6 +139,21 @@ namespace WayOfTheSamurai4SaveEditor.ViewModels
                 var icon = MessageBoxImage.Warning;
                 MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
             }
+        }
+
+        void ShowEditorInfo()
+        {
+            var fullPath = typeof(App).Assembly.Location;
+            var info = FileVersionInfo.GetVersionInfo(fullPath);
+            var version = info.FileVersion;
+            // https://store.steampowered.com/news/app/312780/view/4740557883119627604
+            const string SupportedVersion = "V1.06 Take 2";
+            var text = $"{DefaultTitle}\nVersion : {version}\nSupported Version : {SupportedVersion}\n";
+            string caption = "Word Processor";
+            MessageBoxButton button = MessageBoxButton.YesNoCancel;
+            MessageBoxImage icon = MessageBoxImage.Information;
+
+            MessageBox.Show(text, caption, button, icon, MessageBoxResult.Yes);
         }
     }
 }

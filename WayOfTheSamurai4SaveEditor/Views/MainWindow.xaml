@@ -26,8 +26,8 @@
             <Setter Property="CanUserSortColumns" Value="False"/>
         </Style>
         <CollectionViewSource x:Key="RareItemIdList" Source="{Binding RareItemIdList}" />
-        <DataGrid x:Key="WeaponsDataGrid" x:Name="bukiDansuDataGrid" Style="{StaticResource CommonDataGridStyle}" 
-                            ItemsSource="{Binding .}" d:ItemsSource="{d:SampleData ItemCount=100}">
+        <DataGrid x:Key="WeaponsDataGrid" Style="{StaticResource CommonDataGridStyle}" 
+                            ItemsSource="{Binding .}" x:Shared="False" d:ItemsSource="{d:SampleData ItemCount=100}">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="自作" Binding="{Binding IsOriginal}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="名前" Binding="{Binding Name}"/>
@@ -140,27 +140,23 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <ComboBox ItemsSource="{Binding RareItemIdList}"
-                                                SelectedValue="{Binding Id, UpdateSourceTrigger=PropertyChanged}"/>
+                                                SelectedValue="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"/>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTextColumn Header="個数" Binding="{Binding Count, StringFormat=N0}"/>
+                                <DataGridTextColumn Header="個数" Binding="{Binding Count, Mode=TwoWay, StringFormat=N0}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </DockPanel>
                 </TabItem>
-                <TabItem Header="帯刀中" IsEnabled="False">
+                <TabItem Header="帯刀中">
                     <DockPanel LastChildFill="True">
-                        <DataGrid x:Name="CarriedWeaponsDataGrid" Style="{StaticResource CommonDataGridStyle}" 
-                                  ItemsSource="{Binding SaveData.CarriedWeapons}" d:ItemsSource="{d:SampleData ItemCount=3}">
-                        </DataGrid>
+                        <ContentControl Content="{StaticResource WeaponsDataGrid}" DataContext="{Binding SaveData.CarriedWeapons}"/>
                     </DockPanel>
                 </TabItem>
-                <TabItem Header="武器袋" IsEnabled="False">
+                <TabItem Header="武器袋">
                     <DockPanel LastChildFill="True">
-                        <DataGrid x:Name="BaggedWeaponsDataGrid" Style="{StaticResource CommonDataGridStyle}" 
-                                  ItemsSource="{Binding SaveData.BaggedWeapons}" d:ItemsSource="{d:SampleData ItemCount=10}">
-                        </DataGrid>
+                        <ContentControl Content="{StaticResource WeaponsDataGrid}" DataContext="{Binding SaveData.BaggedWeapons}"/>
                     </DockPanel>
                 </TabItem>
                 <TabItem Header="武器箪笥">

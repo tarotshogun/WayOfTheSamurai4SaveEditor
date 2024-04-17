@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace WayOfTheSamurai4SaveEditor.Models.SaveData
 {
@@ -25,9 +28,10 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveData
             set
             {
                 _id = value;
+                NotifyPropertyChanged();
                 if (value == RareItemId.なし)
                 {
-                    // UIにも反映されるようにしたい
+                    // なぜかUIにはCountの変更が反映されない
                     Count = 0;
                 }
             }
@@ -47,10 +51,17 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveData
                 {
                     _count = 0;
                 }
+                NotifyPropertyChanged();
             }
         }
 
+        public event PropertyChangedEventHandler? PropertyChanged;
         private RareItemId _id = RareItemId.なし;
         private ushort _count = 0;
+
+        protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

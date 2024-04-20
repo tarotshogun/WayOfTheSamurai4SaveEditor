@@ -61,6 +61,7 @@ namespace WayOfTheSamurai4SaveEditor
         馬通二 = 0x6200AA,
         高楊枝 = 0xAB0141,
         黒蜻蛉 = 0x670050,
+        小式部 = 0xCA0127,
 
         // 槍
         黒獅子 = 0x1A0019,
@@ -73,6 +74,7 @@ namespace WayOfTheSamurai4SaveEditor
         麒麟児 = 0xD50132,
 
         // 特殊
+        ジャクリーン = 0xFF0000,
         十手 = 0xFF0004,
         出刃包丁 = 0xFF0008,
         カツオ = 0xFF000A,
@@ -177,6 +179,7 @@ namespace WayOfTheSamurai4SaveEditor
         陸奥守吉行 = 0x0159,
         馬通二 = 0x00F6,
         黒蜻蛉 = 0x0094,
+        小式部 = 0x00FA,
 
         // 槍
         黒獅子 = 0x001C,

@@ -82,17 +82,23 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveData
         [Description("シロギス")]
         Shirogisu = 0x0050,
         Id_0x0051 = 0x0051,
+        [Description("ボラ")]
         Id_0x0052 = 0x0052,
         [Description("マサバ")]
         Id_0x0053 = 0x0053,
         Id_0x0054 = 0x0054,
+        [Description("カツオ")]
         Id_0x0055 = 0x0055,
         Id_0x0056 = 0x0056,
+        [Description("メバル")]
         Id_0x0057 = 0x0057,
+        [Description("カサゴ")]
         Id_0x0058 = 0x0058,
+        [Description("アジ")]
         Id_0x0059 = 0x0059,
         [Description("ヤマメ")]
         Yamame = 0x005A,
+        [Description("マダイ")]
         Id_0x005B = 0x005B,
         [Description("タコ")]
         Id_0x005C = 0x005C,

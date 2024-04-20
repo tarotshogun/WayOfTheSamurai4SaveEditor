@@ -22,6 +22,9 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveData
         public IEnumerable<Tsuka> TsukaList { get; private set; } = Enum.GetValues<Tsuka>();
         public IEnumerable<Mei> MeiList { get; private set; } = Enum.GetValues<Mei>();
         public IEnumerable<Attraction> AttractionList { get; private set; } = Enum.GetValues<Attraction>();
+        public IEnumerable<WeaponId> WeaponIdList { get; private set; } = Enum.GetValues<WeaponId>();
+
+        public WeaponId Id { get; set; }
 
         // 17文字+終端文字
         public string Name

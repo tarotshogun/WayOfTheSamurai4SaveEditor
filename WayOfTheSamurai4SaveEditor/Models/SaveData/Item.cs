@@ -16,12 +16,14 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveData
         RiceBall = 0x0002,
         [Description("腐ったおにぎり")]
         RottenRiceBall = 0x0003,
-        Id_0x0004 = 0x0004,
+        [Description("干物")]
+        Himono = 0x0004,
         [Description("ひよこういろう")]
         Uiro = 0x0005,
-        Id_0x0006 = 0x0006,
+        [Description("きのこ")]
+        Mushroom = 0x0006,
         [Description("毒きのこ")]
-        DokuKinoko = 0x0007,
+        PoisonousMushroom = 0x0007,
         [Description("阿修羅きのこ")]
         AshuraKinoko = 0x0008,
         [Description("秘薬")]
@@ -49,51 +51,39 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveData
         Id_0x0017 = 0x0017,
         Id_0x0018 = 0x0018,
         Id_0x0019 = 0x0019,
-        Id_0x001A = 0x001A,
+        [Description("大根")]
+        JapaneseRadish = 0x001A,
         Id_0x001B = 0x001B,
         Id_0x001C = 0x001C,
         [Description("人参")]
         Ginseng = 0x001D,
         [Description("鬼辛子")]
         Onikarashi = 0x001E,
-        Id_0x001F = 0x001F,
+        [Description("たまご")]
+        Egg = 0x001F,
         Id_0x0020 = 0x0020,
         Id_0x0021 = 0x0021,
         [Description("白紙目録")]
         HakushiMokuroku = 0x0022,
         [Description("梅干し(大)")]
-        Umeboshi = 0x0023,
-        Id_0x0024 = 0x0024,
+        UmeboshiDai = 0x0023,
+        [Description("梅干し")]
+        Umeboshi = 0x0024,
         [Description("梅酒")]
         Umeshu = 0x0025,
         [Description("チョコレート")]
         Chocolate= 0x0026,
+        [Description("空き瓶")]
+        EmptyBottle = 0x0027,
+        [Description("ワイン")]
+        Wine= 0x0028,
         [Description("ソーダ水")]
         Soda = 0x0040,
-        [Description("藁人形")]
-        StrawDool = 0x0065,
-        Id_0x0066 = 0x0066,
-        Id_0x0067 = 0x0067,
-        Id_0x0068 = 0x0068,
-        Id_0x0069 = 0x0069,
-        Id_0x006A = 0x006A,
-        Id_0x006B = 0x006B,
-        [Description("ワイン?")]
-        Wine = 0x006C,
-        [Description("極上ワイン")]
-        SuperlativeWine = 0x006D,
-        [Description("ビンテージワイン")]
-        VintageWine = 0x006E,
-        [Description("コイン")]
-        Coin = 0x0074,
-        [Description("ゴカイ")]
-        Gokai = 0x00C5,
-        [Description("オキアミ")]
-        Okiami = 0x00C6,
         [Description("シロギス")]
         Shirogisu = 0x0050,
         Id_0x0051 = 0x0051,
         Id_0x0052 = 0x0052,
+        [Description("マサバ")]
         Id_0x0053 = 0x0053,
         Id_0x0054 = 0x0054,
         Id_0x0055 = 0x0055,
@@ -101,14 +91,62 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveData
         Id_0x0057 = 0x0057,
         Id_0x0058 = 0x0058,
         Id_0x0059 = 0x0059,
-        Id_0x005A = 0x005A,
+        [Description("ヤマメ")]
+        Yamame = 0x005A,
         Id_0x005B = 0x005B,
+        [Description("タコ")]
         Id_0x005C = 0x005C,
-        Id_0x005D = 0x005D,
+        [Description("ニホンザリガニ")]
+        NihonZarigani = 0x005D,
         [Description("アカヒトデ")]
-        Akahitode = 0x005E,
+        RedStarfish = 0x005E,
         [Description("伝説の魚")]
         LegendaryFish = 0x005F,
+        [Description("錆びた空き缶")]
+        Id_0x0063 = 0x0063,
+        [Description("長靴")]
+        Boots = 0x0064,
+        [Description("藁人形")]
+        StrawDoll = 0x0065,
+        Id_0x0066 = 0x0066,
+        [Description("おにぎり(梅)")]
+        RiceBallUme = 0x0067,
+        [Description("おにぎり(鮭)")]
+        RiceBallSalmon = 0x0068,
+        [Description("おにぎり(高菜)")]
+        RiceBallTakana = 0x0069,
+        Id_0x006A = 0x006A,
+        Id_0x006B = 0x006B,
+        Id_0x006C = 0x006C,
+        [Description("極上ワイン")]
+        SuperlativeWine = 0x006D,
+        [Description("ビンテージワイン")]
+        VintageWine = 0x006E,
+        Id_0x006F = 0x006F,
+        [Description("コイン")]
+        Coin = 0x0074,
+        Id_0x00C0 = 0x00C0,
+        Id_0x00C1 = 0x00C1,
+        Id_0x00C2 = 0x00C2,
+        Id_0x00C3 = 0x00C3,
+        [Description("ミミズ")]
+        Mimizu = 0x00C4,
+        [Description("ゴカイ")]
+        Gokai = 0x00C5,
+        [Description("オキアミ")]
+        Okiami = 0x00C6,
+        [Description("エビ")]
+        Shrimp = 0x00C7,
+        [Description("小魚")]
+        SmallFish = 0x00C8,
+        [Description("疑似餌")]
+        lure = 0x00C9,
+        [Description("ねりエサ")]
+        Neriesa = 0x00CA,
+        [Description("もち")]
+        RiceCake = 0x00CB,
+        [Description("力ミミズ")]
+        ChikaraMimizu = 0x00CC,
         [Description("")]
         None = 0xFFFF,
     }

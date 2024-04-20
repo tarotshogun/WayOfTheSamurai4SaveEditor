@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 解析メモ
 
 5B40 - 手持ちアイテム*10個
+58C0 - 箪笥アイテム たぶん5B3Fまで(80種類格納できる？)
 
 18D10のあたりは流派
 アドレス 修練度 段 斬殺数
@@ -72,8 +73,10 @@ namespace WayOfTheSamurai4SaveEditor.Models.RawData
         public byte[] Hp;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
         public byte[] Padding35AC_35AF;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9616)]
-        public byte[] Padding35B0_5B3F;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8976)]
+        public byte[] Padding35B0_58BF;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 80)]
+        public RawRareItem[] CabinetItems;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
         public RawRareItem[] CarriedItems;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]

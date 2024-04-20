@@ -19,8 +19,9 @@ namespace WayOfTheSamurai4SaveEditor.Models
         public ObservableCollection<Weapon> CarriedWeapons { get; set; } = [];
         public ObservableCollection<Weapon> BaggedWeapons { get; set; } = [];
         public ObservableCollection<Weapon> CabinetWeapons { get; set; } = [];
-        public ObservableCollection<RareItem> RareItems { get; set; } = [];
         public ObservableCollection<Item> CarriedItems { get; set; } = [];
+        public ObservableCollection<Item> CabinetItems { get; set; } = [];
+        public ObservableCollection<RareItem> RareItems { get; set; } = [];
         public ObservableCollection<Ryuha> Ryuha { get; set; } = [];
         public string Path { get; private set; } = "";
 
@@ -38,8 +39,9 @@ namespace WayOfTheSamurai4SaveEditor.Models
             CarriedWeapons = WeaponConverter.ToWeapons(_raw.CarriedWeapons);
             BaggedWeapons = WeaponConverter.ToWeapons(_raw.BaggedWeapons);
             CabinetWeapons = WeaponConverter.ToWeapons(_raw.CabinetWeapons);
-            RareItems = SaveDataConverter.ToRareItems(_raw.RareItems);
             CarriedItems = SaveDataConverter.ToItems(_raw.CarriedItems);
+            CabinetItems = SaveDataConverter.ToItems(_raw.CabinetItems);
+            RareItems = SaveDataConverter.ToRareItems(_raw.RareItems);
             Ryuha = RyuhaConverter.ToRyuha(_raw.MyRyuhaName);
             Path = path;
         }
@@ -57,6 +59,7 @@ namespace WayOfTheSamurai4SaveEditor.Models
             WeaponConverter.ToRawWeapons(CabinetWeapons, ref _raw.CabinetWeapons);
             RyuhaConverter.ToRawMyRyuhaName(Ryuha, ref _raw.MyRyuhaName);
             SaveDataConverter.ToRawItems(CarriedItems, ref _raw.CarriedItems);
+            SaveDataConverter.ToRawItems(CabinetItems, ref _raw.CabinetItems);
             SaveDataConverter.ToRawRareItems(RareItems, ref _raw.RareItems);
             SaveDataAccessor.Save(path, _raw);
             Path = path;

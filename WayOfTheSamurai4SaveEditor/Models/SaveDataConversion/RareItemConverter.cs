@@ -51,9 +51,9 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveDataConversion
             }
             else
             {
-                const string defaultValue = "なし";
+                const string defaultValue = "None";
                 Debug.Assert(Enum.GetNames(typeof(T)).Contains(defaultValue));
-                return (T)Enum.Parse(typeof(T), "なし");
+                return (T)Enum.Parse(typeof(T), defaultValue);
             }
         }
 

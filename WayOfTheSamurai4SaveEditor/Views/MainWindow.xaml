@@ -25,7 +25,6 @@
             <Setter Property="VerticalGridLinesBrush" Value="LightGray" />
             <Setter Property="CanUserSortColumns" Value="False"/>
         </Style>
-        <CollectionViewSource x:Key="RareItemIdList" Source="{Binding RareItemIdList}" />
         <DataGrid x:Key="WeaponsDataGrid" Style="{StaticResource CommonDataGridStyle}" 
                             ItemsSource="{Binding .}" x:Shared="False" d:ItemsSource="{d:SampleData ItemCount=100}">
             <DataGrid.Columns>
@@ -102,6 +101,20 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <DataGrid x:Key="ItemsDataGrid" Style="{StaticResource CommonDataGridStyle}"
+                            ItemsSource="{Binding .}" x:Shared="False" d:ItemsSource="{d:SampleData ItemCount=10}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="アイテム">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding ItemIdList}"
+                                                SelectedValue="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="個数" Binding="{Binding Count, Mode=TwoWay, StringFormat=N0}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Window.Resources>
     <Grid>
         <DockPanel>
@@ -133,20 +146,12 @@
                 </TabItem>
                 <TabItem Header="貴重品">
                     <DockPanel LastChildFill="True">
-                        <DataGrid Style="{StaticResource CommonDataGridStyle}" ItemsSource="{Binding SaveData.RareItems}" 
-                                  d:ItemsSource="{d:SampleData ItemCount=10}">
-                            <DataGrid.Columns>
-                                <DataGridTemplateColumn Header="アイテム">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <ComboBox ItemsSource="{Binding RareItemIdList}"
-                                                SelectedValue="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"/>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTextColumn Header="個数" Binding="{Binding Count, Mode=TwoWay, StringFormat=N0}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                        <ContentControl Content="{StaticResource ItemsDataGrid}" DataContext="{Binding SaveData.RareItems}"/>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Header="道具（所持）">
+                    <DockPanel LastChildFill="True">
+                        <ContentControl Content="{StaticResource ItemsDataGrid}" DataContext="{Binding SaveData.CarriedItems}"/>
                     </DockPanel>
                 </TabItem>
                 <TabItem Header="帯刀中">

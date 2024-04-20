@@ -9,18 +9,24 @@ using System.Windows;
 
 namespace WayOfTheSamurai4SaveEditor.Models.SaveData
 {
-    enum RareItemId : ushort
+    [TypeConverter(typeof(EnumDisplayTypeConverter))]
+    public enum RareItemId : ushort
     {
-        くず鉄 = 0x0029,
-        卸し鉄 = 0x002A,
-        堂島鋼 = 0x002B,
-        緋緋色金 = 0x002C,
-        なし = 0xFFFF,
+        [Description("くず鉄")]
+        Kuzutetsu = 0x0029,
+        [Description("卸し鉄")]
+        Oroshigane = 0x002A,
+        [Description("堂島鋼")]
+        Doujimahagane = 0x002B,
+        [Description("緋緋色金")]
+        Hihiirokane = 0x002C,
+        [Description("")]
+        None = 0xFFFF,
     }
 
     class RareItem
     {
-        public IEnumerable<RareItemId> RareItemIdList { get; private set; } = Enum.GetValues<RareItemId>();
+        public IEnumerable<RareItemId> ItemIdList { get; private set; } = Enum.GetValues<RareItemId>();
 
         public RareItemId Id
         {
@@ -29,7 +35,7 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveData
             {
                 _id = value;
                 NotifyPropertyChanged();
-                if (value == RareItemId.なし)
+                if (value == RareItemId.None)
                 {
                     // なぜかUIにはCountの変更が反映されない
                     Count = 0;
@@ -43,7 +49,7 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveData
             set
             {
                 const ushort MaxRareItemCount = 99;
-                if (Id != RareItemId.なし)
+                if (Id != RareItemId.None)
                 {
                     _count = value > MaxRareItemCount ? MaxRareItemCount : value;
                 }
@@ -56,7 +62,7 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveData
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
-        private RareItemId _id = RareItemId.なし;
+        private RareItemId _id = RareItemId.None;
         private ushort _count = 0;
 
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")

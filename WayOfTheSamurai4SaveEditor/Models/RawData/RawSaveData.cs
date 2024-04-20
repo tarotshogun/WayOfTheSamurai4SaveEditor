@@ -8,14 +8,7 @@ using System.Threading.Tasks;
 /*
 解析メモ
 
-35A8 float 体力 9999が最大（461C3C00）
-35A4 float 活力 9999が最大（461C3C00）
-
-5B90 ~ 貴重品
-0029XXXX 0029がくず鉄でXXXXが個数
-002AXXXX 0029が卸し金でXXXXが個数
-002BXXXX 0029が堂島鋼でXXXXが個数
-002CXXXX 0029が緋緋色金でXXXXが個数
+5B40 - 手持ちアイテム*10個
 
 18D10のあたりは流派
 アドレス 修練度 段 斬殺数
@@ -79,8 +72,10 @@ namespace WayOfTheSamurai4SaveEditor.Models.RawData
         public byte[] Hp;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
         public byte[] Padding35AC_35AF;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9696)]
-        public byte[] Padding35B0_5B90;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9616)]
+        public byte[] Padding35B0_5B3F;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
+        public RawRareItem[] CarriedItems;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
         public RawRareItem[] RareItems;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 18656)]
@@ -152,7 +147,7 @@ namespace WayOfTheSamurai4SaveEditor.Models.RawData
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
         public byte[] Mei;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-        public byte[] PaddingAD87_AD89;
+        public byte[] RyutsuCount;  // 初期値0xFFFF
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public byte[] KillCount;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]

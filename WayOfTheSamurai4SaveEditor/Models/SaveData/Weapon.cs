@@ -125,8 +125,9 @@ namespace WayOfTheSamurai4SaveEditor.Models.SaveData
         }
 
         public Mei Mei { get; set; }
-        public uint KillCount { get; set; }
-        public uint TsumagiriCount { get; set; }
+        public ushort RyutsuCount { get; set; } // 初期値0xFFFFをどう扱うかが課題
+        public ushort KillCount { get; set; }
+        public ushort TsumagiriCount { get; set; }
         public uint TotalRecoveredDurability { get; set; }
 
         public Attraction[] Attractions
